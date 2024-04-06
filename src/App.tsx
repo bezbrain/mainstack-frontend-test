@@ -1,7 +1,10 @@
+import { NavBar } from "./components/navBar";
+
 const App = () => {
   return (
-    <div>
-      <p className="text-3xl">Clean up</p>
+    <div className="relative mx-4">
+      <NavBar />
+      <p className="text-3xl pt-24">Clean up</p>
     </div>
   );
 };
