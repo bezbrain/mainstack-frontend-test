@@ -1,7 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: "Degular";
   src: url("../Degular/Degular-14/Degular-Regular.otf");
-  /* Add other font formats if needed */
 }
 
 * {
