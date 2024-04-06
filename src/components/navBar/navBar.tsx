@@ -14,16 +14,18 @@ const middleNavStyles = `flex items-center gap-[5px] transition-all py-2 rounded
 
 const NavBar = () => {
   return (
-    <nav className="flex flex-col mt-4 shadow-md px-4 py-2 w-full iPad:absolute iPad:flex-row iPad:rounded-full iPad:justify-between iPad:items-center">
+    <nav
+      className={`flex flex-col h-[320px] bg-[#fff] z-10 mt-4 shadow-md px-4 py-2 w-full absolute iPad:flex-row iPad:rounded-full iPad:justify-between iPad:items-center iPad:h-fit`}
+    >
       {/* Logo */}
-      <a href="/" className="order-1 iPad:order-1">
+      <a href="/" className="order-1 absolute iPad:order-1 iPad:static">
         <img src={mainstackLogo} alt="Mainstack" />
       </a>
 
       <RiMenu4Line className="fixed right-8 top-8 cursor-pointer text-3xl iPad:hidden" />
 
       {/* Middle nav items */}
-      <ul className="items-center w-fit gap-4 transition-all iPad:flex order-3 iPad:order-2 border-2">
+      <ul className="items-center absolute top-28 w-fit gap-4 transition-all iPad:flex order-3 iPad:order-2 iPad:static">
         <li>
           <a href="" className={middleNavStyles}>
             <GrHomeRounded />
@@ -57,7 +59,7 @@ const NavBar = () => {
       </ul>
 
       {/* Right nav items */}
-      <ul className="items-center gap-8 flex order-2 iPad:order-3">
+      <ul className="items-center absolute top-16 gap-8 flex order-2 iPad:order-3 iPad:static">
         <li>
           <FiBell className="text-2xl cursor-pointer" />
         </li>
