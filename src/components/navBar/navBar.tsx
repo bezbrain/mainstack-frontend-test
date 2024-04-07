@@ -9,14 +9,24 @@ import { RiAppsLine, RiMenu4Line } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import { closeNav, openNav } from "../../management/features/navSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { navStyles } from "./navStyles";
+import { NavProfileBtn } from "../helpers/skeleton-loaders";
+import { ProfileDropdown } from "./profileDropdown";
+import userProfile from "../../management/action/userProfile.action";
+import { getFirstLetter } from "../../utils/extractFirstCase";
 
 // White color: #f5f5f7
 // Black color: #56616b
 
 const NavBar = () => {
-  const { navIsOpen } = useSelector((store: RootState) => store.navStore);
+  const { navIsOpen, isLoading, user } = useSelector(
+    (store: RootState) => store.navStore
+  );
+
+  const { first_name, last_name } = user;
+
+  const [toggleDropdown, setToggleDropdown] = useState(false);
 
   const [isToggle, setIsToggle] = useState(false);
 
@@ -33,6 +43,10 @@ const NavBar = () => {
     setIsToggle(false);
     dispatch(closeNav());
   };
+
+  useEffect(() => {
+    dispatch(userProfile());
+  }, []);
 
   return (
     <nav className={navStyles(navIsOpen).navBarStyle}>
@@ -106,13 +120,22 @@ const NavBar = () => {
         <li>
           <MdOutlineMessage className="text-2xl cursor-pointer" />
         </li>
-        <li>
-          <button className="flex items-center bg-[#edf0f5] p-2 rounded-3xl">
-            <span className="bg-[#3b4147] text-[#f5f5f7] h-[35px] w-[35px] rounded-full flex items-center justify-center">
-              OJ
-            </span>
-            <IoReorderThreeOutline className="text-3xl mx-2" />
-          </button>
+        <li className="relative">
+          {isLoading ? (
+            <NavProfileBtn />
+          ) : (
+            <button
+              className="flex items-center bg-[#edf0f5] p-2 rounded-3xl"
+              onClick={() => setToggleDropdown(!toggleDropdown)}
+            >
+              <span className="bg-[#3b4147] text-[#f5f5f7] h-[35px] w-[35px] rounded-full flex items-center justify-center">
+                {getFirstLetter(first_name)}
+                {getFirstLetter(last_name)}
+              </span>
+              <IoReorderThreeOutline className="text-3xl mx-2" />
+            </button>
+          )}
+          {toggleDropdown && <ProfileDropdown />}
         </li>
       </ul>
     </nav>
