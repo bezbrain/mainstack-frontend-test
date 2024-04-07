@@ -65,7 +65,7 @@ const NavBar = () => {
         <li>
           <a href="" className={navStyles(navIsOpen).middleNavStyles}>
             <GrHomeRounded />
-            <span className="mt-0 hover:mt-0 iPad:mt-1">Home</span>
+            <span>Home</span>
           </a>
         </li>
         <li>
