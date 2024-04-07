@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import wallet from "../action/wallet.action";
 import { serverMessage } from "../../utils/serverMessage";
 import { toast } from "react-toastify";
+import walletData from "../action/wallet.action";
 
 interface WalletProps {
+  isWalletLoading: boolean;
   wallet: {
     balance: number;
     total_payout: number;
@@ -11,10 +12,10 @@ interface WalletProps {
     pending_payout: number;
     ledger_balance: number;
   };
-  isLoading: boolean;
 }
 
 const initialState: WalletProps = {
+  isWalletLoading: false,
   wallet: {
     balance: 0,
     total_payout: 0,
@@ -22,7 +23,6 @@ const initialState: WalletProps = {
     pending_payout: 0,
     ledger_balance: 0,
   },
-  isLoading: false,
 };
 
 const walletSlice = createSlice({
@@ -34,16 +34,16 @@ const walletSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(wallet.pending, (state) => {
-        state.isLoading = true;
+      .addCase(walletData.pending, (state) => {
+        state.isWalletLoading = true;
       })
-      .addCase(wallet.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
+      .addCase(walletData.fulfilled, (state, { payload }) => {
+        state.isWalletLoading = false;
         state.wallet = payload;
       })
-      .addCase(wallet.rejected, (state, { payload }: any) => {
-        state.isLoading = true;
+      .addCase(walletData.rejected, (state, { payload }: any) => {
         serverMessage(payload, toast);
+        state.isWalletLoading = true;
       });
   },
 });
