@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import userProfile from "../action/userProfile.action";
+import { serverMessage } from "../../utils/serverMessage";
+import { toast } from "react-toastify";
 
 interface NavBarProps {
   navIsOpen: boolean;
@@ -42,8 +44,9 @@ const navSlice = createSlice({
         state.isLoading = false;
         state.user = payload;
       })
-      .addCase(userProfile.rejected, (state) => {
-        state.isLoading = false;
+      .addCase(userProfile.rejected, (state, { payload }: any) => {
+        serverMessage(payload, toast);
+        state.isLoading = true;
       });
   },
 });
