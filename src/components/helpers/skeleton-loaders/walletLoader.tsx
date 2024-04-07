@@ -6,7 +6,7 @@ const WalletLoader = () => {
       {Array(4)
         .fill(undefined)
         .map((_, i) => (
-          <Skeleton key={i} className="skeleton" height={75} />
+          <Skeleton key={i} height={75} />
         ))}
     </div>
   );
