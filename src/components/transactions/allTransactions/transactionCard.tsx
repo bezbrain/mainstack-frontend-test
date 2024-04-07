@@ -2,7 +2,7 @@ import { LuMoveDownLeft } from "react-icons/lu";
 
 const TransactionCard = () => {
   return (
-    <div className="flex items-center justify-between mt-6">
+    <div className="flex items-center gap-4 justify-between mt-6">
       {/* Left hand side */}
       <div className="flex items-center gap-4 leading-6">
         <div className="bg-[#e3fcf2] w-[48px] h-[48px] rounded-full flex items-center justify-center">

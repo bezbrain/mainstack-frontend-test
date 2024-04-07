@@ -3,11 +3,9 @@ import { SectionWrapper } from "../general/wrappers";
 
 const Hero = () => {
   return (
-    <SectionWrapper>
-      <div className="pt-32 flex justify-between">
-        <Graph />
-        <Balances />
-      </div>
+    <SectionWrapper className="pt-32 justify-between iPadAir:flex">
+      <Graph />
+      <Balances />
     </SectionWrapper>
   );
 };

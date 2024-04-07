@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface SectionWrapperProps {
   children: ReactNode;
-  className: string;
+  className?: string;
 }
 
 const SectionWrapper = ({ children, className }: SectionWrapperProps) => {
