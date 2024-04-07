@@ -4,7 +4,7 @@ import { Transactions } from "./components/transactions";
 
 const App = () => {
   return (
-    <main className="relative mx-4">
+    <main className="mx-4">
       <NavBar />
       <Hero />
       <Transactions />

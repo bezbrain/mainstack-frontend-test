@@ -44,14 +44,14 @@ const NavBar = () => {
       {!isToggle && (
         // Open Nav bar icon
         <RiMenu4Line
-          className="fixed right-8 top-7 cursor-pointer text-3xl iPad:hidden"
+          className="fixed right-8 top-4 cursor-pointer text-3xl iPad:hidden"
           onClick={handleNavOpenClick}
         />
       )}
       {isToggle && (
         // Close Nav bar icon
         <IoCloseSharp
-          className="fixed right-8 top-7 cursor-pointer text-3xl iPad:hidden"
+          className="fixed right-8 top-4 cursor-pointer text-3xl iPad:hidden"
           onClick={handleNavCloseClick}
         />
       )}
