@@ -1,14 +1,21 @@
 import { TransactionCard } from "..";
+import { TransactionLoader } from "../../helpers/skeleton-loaders";
 
 const AllTransactions = () => {
   return (
-    <div>
-      {Array(7)
-        .fill(undefined)
-        .map((_, index) => (
-          <TransactionCard key={index} />
-        ))}
-    </div>
+    <>
+      {true ? (
+        <TransactionLoader />
+      ) : (
+        <div>
+          {Array(7)
+            .fill(undefined)
+            .map((_, index) => (
+              <TransactionCard key={index} />
+            ))}
+        </div>
+      )}
+    </>
   );
 };
 
