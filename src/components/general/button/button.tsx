@@ -7,6 +7,7 @@ interface ButtonProps {
   btnStyle?: string;
   btnConStyle?: string;
   iconStyle?: string;
+  handleClick?: () => void;
 }
 
 const Button = ({
@@ -15,10 +16,11 @@ const Button = ({
   btnStyle,
   btnConStyle,
   iconStyle,
+  handleClick,
 }: ButtonProps) => {
   return (
     <ButtonWrapper className={btnConStyle}>
-      <button className={btnStyle}>
+      <button className={btnStyle} onClick={handleClick}>
         <span className={iconStyle}>{btnContent}</span>
         {icon}
       </button>
