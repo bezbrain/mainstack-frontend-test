@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import { closeNav, openNav } from "../../management/features/navSlice";
 import { useState } from "react";
+import { navStyles } from "./navStyles";
 
 // White color: #f5f5f7
 // Black color: #56616b
@@ -18,14 +19,6 @@ const NavBar = () => {
   const { navIsOpen } = useSelector((store: RootState) => store.navStore);
 
   const [isToggle, setIsToggle] = useState(false);
-
-  const navBarStyle = `flex flex-col ${
-    navIsOpen ? "h-[320px]" : "h-[55px]"
-  } bg-[#fff] z-10 mt-4 shadow-md px-4 py-2 w-full absolute iPad:flex-row iPad:rounded-full ${
-    navIsOpen ? "" : "rounded-full"
-  } iPad:justify-between iPad:items-center iPad:h-fit`;
-
-  const middleNavStyles = `flex items-center gap-[5px] transition-all py-2 rounded-3xl iPad:px-4 iPad:hover:bg-[#edf0f5]`;
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -42,7 +35,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className={navBarStyle}>
+    <nav className={navStyles(navIsOpen).navBarStyle}>
       {/* Logo */}
       <a href="/" className="order-1 absolute iPad:order-1 iPad:static">
         <img src={mainstackLogo} alt="Mainstack" />
@@ -70,31 +63,31 @@ const NavBar = () => {
         }`}
       >
         <li>
-          <a href="" className={middleNavStyles}>
+          <a href="" className={navStyles(navIsOpen).middleNavStyles}>
             <GrHomeRounded />
             <span className="mt-0 hover:mt-0 iPad:mt-1">Home</span>
           </a>
         </li>
         <li>
-          <a href="" className={middleNavStyles}>
+          <a href="" className={navStyles(navIsOpen).middleNavStyles}>
             <MdInsertChartOutlined className="text-xl" />
             <span>Analytics</span>
           </a>
         </li>
         <li>
-          <a href="" className={middleNavStyles}>
+          <a href="" className={navStyles(navIsOpen).middleNavStyles}>
             <FaMoneyBills className="text-xl" />
             <span>Revenue</span>
           </a>
         </li>
         <li>
-          <a href="" className={middleNavStyles}>
+          <a href="" className={navStyles(navIsOpen).middleNavStyles}>
             <LuUsers className="text-xl" />
             <span>CMR</span>
           </a>
         </li>
         <li>
-          <a href="" className={middleNavStyles}>
+          <a href="" className={navStyles(navIsOpen).middleNavStyles}>
             <RiAppsLine className="text-xl" />
             <span>Apps</span>
           </a>
