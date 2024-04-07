@@ -38,14 +38,16 @@ const AllTransactions = () => {
       ) : (
         <div>
           {sortTransactions?.map((each, i) => {
-            const { metadata, type, amount, date } = each;
+            const { metadata, type, amount, date, status } = each;
             return (
               <TransactionCard
                 key={i}
-                productName={metadata?.product_name || "No Product Name"}
+                productName={metadata?.product_name || "Cash Withdrawal"}
                 name={metadata?.name || "No Name"}
                 amount={amount}
                 date={date}
+                type={type}
+                status={status}
               />
             );
           })}

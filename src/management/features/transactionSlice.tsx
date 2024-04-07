@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import allTransactions from "../action/transactions.action";
+import { serverMessage } from "../../utils/serverMessage";
+import { toast } from "react-toastify";
 
 export interface TransactionProps {
   istransLoading: boolean;
@@ -57,8 +59,9 @@ const transactionSlice = createSlice({
         state.istransLoading = false;
         state.transactions = payload;
       })
-      .addCase(allTransactions.rejected, (state) => {
+      .addCase(allTransactions.rejected, (state, { payload }) => {
         state.istransLoading = true;
+        serverMessage(payload, toast);
       });
   },
 });
