@@ -15,7 +15,6 @@ import { NavProfileBtn } from "../helpers/skeleton-loaders";
 import { ProfileDropdown } from "./profileDropdown";
 import userProfile from "../../management/action/userProfile.action";
 import { getFirstLetter } from "../../utils/extractFirstCase";
-import { toast } from "react-toastify";
 
 // White color: #f5f5f7
 // Black color: #56616b
