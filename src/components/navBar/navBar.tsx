@@ -12,12 +12,15 @@ import { closeNav, openNav } from "../../management/features/navSlice";
 import { useState } from "react";
 import { navStyles } from "./navStyles";
 import { NavProfileBtn } from "../helpers/skeleton-loaders";
+import { ProfileDropdown } from "./profileDropdown";
 
 // White color: #f5f5f7
 // Black color: #56616b
 
 const NavBar = () => {
   const { navIsOpen } = useSelector((store: RootState) => store.navStore);
+
+  const [toggleDropdown, setToggleDropdown] = useState(false);
 
   const [isToggle, setIsToggle] = useState(false);
 
@@ -107,14 +110,18 @@ const NavBar = () => {
         <li>
           <MdOutlineMessage className="text-2xl cursor-pointer" />
         </li>
-        <li>
-          <NavProfileBtn />
-          {/* <button className="flex items-center bg-[#edf0f5] p-2 rounded-3xl">
+        <li className="relative">
+          {/* <NavProfileBtn /> */}
+          <button
+            className="flex items-center bg-[#edf0f5] p-2 rounded-3xl"
+            onClick={() => setToggleDropdown(!toggleDropdown)}
+          >
             <span className="bg-[#3b4147] text-[#f5f5f7] h-[35px] w-[35px] rounded-full flex items-center justify-center">
               OJ
             </span>
             <IoReorderThreeOutline className="text-3xl mx-2" />
-          </button> */}
+          </button>
+          {toggleDropdown && <ProfileDropdown />}
         </li>
       </ul>
     </nav>
