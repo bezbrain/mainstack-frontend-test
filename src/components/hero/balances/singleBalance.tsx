@@ -3,7 +3,7 @@ import { IoMdInformationCircleOutline } from "react-icons/io";
 const SingleBalance = () => {
   return (
     <div className="mb-6">
-      <div className="flex items-center justify-between mb-2">
+      <div className="flex items-center justify-between mb-1">
         <p>Ledger Balance</p>
         <IoMdInformationCircleOutline
           className="text-xl"
