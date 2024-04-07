@@ -1,6 +1,18 @@
 import { LuMoveDownLeft } from "react-icons/lu";
 
-const TransactionCard = () => {
+interface TransactionCardProps {
+  productName: string;
+  name: string;
+  amount: number;
+  date: string;
+}
+
+const TransactionCard = ({
+  productName,
+  name,
+  amount,
+  date,
+}: TransactionCardProps) => {
   return (
     <div className="flex items-center gap-4 justify-between mt-6">
       {/* Left hand side */}
@@ -9,14 +21,14 @@ const TransactionCard = () => {
           <LuMoveDownLeft className="text-[#22664a]" />
         </div>
         <div>
-          <h3 className="font-semibold">Psychology of Money </h3>
-          <p className="text-[14px]">Roy Cash</p>
+          <h3 className="font-semibold">{productName}</h3>
+          <p className="text-[14px]">{name}</p>
         </div>
       </div>
       {/* Right hand side */}
       <div>
-        <h3 className="font-extrabold text-[#000] text-right">USD 600</h3>
-        <p className="text-[14px]">Apr 03,2022</p>
+        <h3 className="font-extrabold text-[#000] text-right">USD {amount}</h3>
+        <p className="text-[14px]">{date}</p>
       </div>
     </div>
   );

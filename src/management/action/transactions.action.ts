@@ -5,8 +5,8 @@ const allTransactions = createAsyncThunk(
   "allTransactions",
   async (_, thunkAPI) => {
     try {
-      const data = getTransactions();
-      console.log(data);
+      const { data } = await getTransactions();
+      //   console.log(data);
       return data;
     } catch (error) {
       console.log(error);
