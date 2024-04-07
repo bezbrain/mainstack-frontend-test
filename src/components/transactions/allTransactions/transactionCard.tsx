@@ -1,5 +1,6 @@
 import { LuMoveDownLeft, LuMoveUpRight } from "react-icons/lu";
 import { formatDate } from "../../../utils/convertDateFormat";
+import { toCapitalLetter } from "../../../utils/toCapitalLetter";
 
 interface TransactionCardProps {
   productName: string;
@@ -40,7 +41,7 @@ const TransactionCard = ({
               type === "deposit" ? "" : "text-[#0ea164]"
             }`}
           >
-            {type === "deposit" ? name : status}
+            {type === "deposit" ? name : toCapitalLetter(status)}
           </p>
         </div>
       </div>
