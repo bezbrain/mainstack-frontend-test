@@ -15,7 +15,10 @@ const SingleBalance = ({ name, amount }: SingleBalanceProps) => {
           title="This is my ledger balance"
         />
       </div>
-      <p className="text-[#000] text-[28px] font-extrabold">USD {amount}.00</p>
+      <p className="text-[#000] text-[28px] font-extrabold">
+        USD {amount}
+        {`${amount}`.includes(".") ? "" : ".00"}
+      </p>
     </div>
   );
 };
