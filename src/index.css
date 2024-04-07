@@ -5,6 +5,7 @@
 @font-face {
   font-family: "Degular";
   src: url("../Degular/Degular-14/Degular-Regular.otf");
+  /* url("../Degular/Degular-14/Degular-Bold.otf"); */
 }
 
 * {
