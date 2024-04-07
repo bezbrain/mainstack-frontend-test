@@ -1,11 +1,14 @@
 import { Balances, Graph } from ".";
+import { SectionWrapper } from "../general/wrappers";
 
 const Hero = () => {
   return (
-    <section className="pt-32 flex justify-between max-w-[1440px] mx-auto">
-      <Graph />
-      <Balances />
-    </section>
+    <SectionWrapper>
+      <div className="pt-32 flex justify-between">
+        <Graph />
+        <Balances />
+      </div>
+    </SectionWrapper>
   );
 };
 
