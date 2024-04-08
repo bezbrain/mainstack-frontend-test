@@ -49,25 +49,31 @@ export const transactionTypeData = [
   {
     id: 1,
     type: "Store Transactions",
+    name: "store",
   },
   {
     id: 2,
     type: "Get Tipped",
+    name: "tipped",
   },
   {
     id: 3,
     type: "Withdrawals",
+    name: "withdrawals",
   },
   {
     id: 4,
     type: "Chargebacks",
+    name: "chargebacks",
   },
   {
     id: 5,
     type: "Cashbacks",
+    name: "cashbacks",
   },
   {
     id: 6,
     type: "Refer & Earn",
+    name: "refer",
   },
 ];

@@ -11,7 +11,7 @@ const Filter = () => {
     isFilter
       ? "w-[456px] transition-all duration-1000"
       : "-right-[500px] transition-all duration-1000"
-  } h-[100vh] bg-white rounded-2xl p-4`;
+  } min-h-[100vh] bg-white rounded-2xl p-4`;
 
   const dispatch = useDispatch<AppDispatch>();
 

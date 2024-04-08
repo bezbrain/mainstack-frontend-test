@@ -3,11 +3,27 @@ import { createSlice } from "@reduxjs/toolkit";
 interface FilterProps {
   isFilter: boolean;
   isTransactionType: boolean;
+  filter: {
+    store: boolean;
+    tipped: boolean;
+    withdrawals: boolean;
+    chargebacks: boolean;
+    cashbacks: boolean;
+    refer: boolean;
+  };
 }
 
 const initialState: FilterProps = {
   isFilter: false,
   isTransactionType: false,
+  filter: {
+    store: true,
+    tipped: true,
+    withdrawals: true,
+    chargebacks: true,
+    cashbacks: true,
+    refer: true,
+  },
 };
 
 const filterSlice = createSlice({
@@ -26,6 +42,12 @@ const filterSlice = createSlice({
     closeTransactionType: (state) => {
       state.isTransactionType = false;
     },
+    checkedInput: (state, { payload }) => {
+      state.filter = {
+        ...state.filter,
+        ...payload,
+      };
+    },
   },
 });
 
@@ -36,4 +58,5 @@ export const {
   closeFilter,
   toggleTransactionType,
   closeTransactionType,
+  checkedInput,
 } = filterSlice.actions;
