@@ -44,3 +44,30 @@ export const dropdown = [
     content: "Sign Out",
   },
 ];
+
+export const transactionTypeData = [
+  {
+    id: 1,
+    type: "Store Transactions",
+  },
+  {
+    id: 2,
+    type: "Get Tipped",
+  },
+  {
+    id: 3,
+    type: "Withdrawals",
+  },
+  {
+    id: 4,
+    type: "Chargebacks",
+  },
+  {
+    id: 5,
+    type: "Cashbacks",
+  },
+  {
+    id: 6,
+    type: "Refer & Earn",
+  },
+];

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../store";
 import allTransactions from "../../../management/action/transactions.action";
 import { TransactionProps } from "../../../management/features/transactionSlice";
+import { closeFilter } from "../../../management/features/filtersSlice";
 
 const AllTransactions = () => {
   const { istransLoading, transactions } = useSelector(
@@ -32,7 +33,7 @@ const AllTransactions = () => {
   }, [transactions]);
 
   return (
-    <>
+    <div onClick={() => dispatch(closeFilter())}>
       {istransLoading ? (
         <TransactionLoader />
       ) : (
@@ -53,7 +54,7 @@ const AllTransactions = () => {
           })}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

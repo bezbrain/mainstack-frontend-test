@@ -18,7 +18,7 @@ const DateRange = () => {
   const [endValue, setEndValue] = useState<Value>(new Date());
 
   useEffect(() => {
-    // calendarFormat(startValue);
+    calendarFormat(startValue);
   }, [startValue]);
 
   const handleStartCalenderClick = () => {
@@ -30,8 +30,8 @@ const DateRange = () => {
   };
 
   return (
-    <DateWrapper>
-      <h2 className="font-extrabold">Date Range</h2>
+    <DateWrapper className="text-[#141417]">
+      <h2 className="font-extrabold mb-1">Date Range</h2>
       <div className="flex gap-2">
         {/* Start Date */}
         <div className="w-1/2">

@@ -59,7 +59,7 @@ export const calendarFormat = (value: Value) => {
 
     const month = monthNames[monthIndex];
 
-    console.log(day, month, year);
+    // console.log(day, month, year);
     return { day, month, year };
   }
 };
