@@ -1,5 +1,5 @@
 import { IoCloseSharp } from "react-icons/io5";
-import { FilterHeader } from ".";
+import { DateRange, FilterHeader } from ".";
 
 const Filter = () => {
   return (
@@ -10,6 +10,8 @@ const Filter = () => {
       </header>
 
       <FilterHeader />
+
+      <DateRange />
     </div>
   );
 };

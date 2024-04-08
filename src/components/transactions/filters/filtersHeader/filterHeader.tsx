@@ -1,7 +1,7 @@
 import { Button } from "../../../general/button";
 
 const btnFilterStyle =
-  "text-[14px] px-4 hover:bg-[#edf0f5] bg-inherit border-[1px]";
+  "text-[14px] px-4 py-2 hover:bg-[#edf0f5] bg-inherit border-[1px]";
 
 const FilterHeader = () => {
   return (

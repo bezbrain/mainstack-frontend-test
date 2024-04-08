@@ -1,3 +1,5 @@
+import { Value } from "../components/transactions/filters/dateRange/dateRange";
+
 export const formatDate = (inputDate: string) => {
   const date = new Date(inputDate);
 
@@ -30,4 +32,34 @@ export const formatDate = (inputDate: string) => {
   const formattedDate = `${month} ${day}, ${year}`;
 
   return formattedDate;
+};
+
+export const calendarFormat = (value: Value) => {
+  if (value !== null && !(value instanceof Array)) {
+    const date = new Date(value);
+    const day = date.getDate();
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
+
+    // Array of month names
+    const monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    const month = monthNames[monthIndex];
+
+    console.log(day, month, year);
+    return { day, month, year };
+  }
 };
