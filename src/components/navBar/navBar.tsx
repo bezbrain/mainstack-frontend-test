@@ -41,6 +41,7 @@ const NavBar = () => {
   //   CLOSE THE NAV BAR
   const handleNavCloseClick = () => {
     setIsToggle(false);
+    setToggleDropdown(false);
     dispatch(closeNav());
   };
 
