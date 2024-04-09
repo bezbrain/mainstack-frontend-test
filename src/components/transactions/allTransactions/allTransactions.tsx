@@ -42,7 +42,7 @@ const AllTransactions = () => {
     setSortTransactions(sortedTransactions);
   }, [transactions]);
 
-  if (transactions.length > 0) {
+  if (transactions.length === 0) {
     return <NotFound />;
   }
 

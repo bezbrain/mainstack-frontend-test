@@ -3,6 +3,7 @@ import navReducer from "./management/features/navSlice";
 import walletReducer from "./management/features/walletSlice";
 import transactionReducer from "./management/features/transactionSlice";
 import filterReducer from "./management/features/filtersSlice";
+import FilteringReducer from "./management/features/filteringSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     walletStore: walletReducer,
     transactionStore: transactionReducer,
     filterStore: filterReducer,
+    filteringStore: FilteringReducer,
   },
 
   middleware: (getDefaultMiddleware) =>
