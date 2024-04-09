@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 interface FilterProps {
   isFilter: boolean;
   isTransactionType: boolean;
+  isTransactionStatus: boolean;
   filter: {
     store: boolean;
     tipped: boolean;
@@ -11,11 +12,17 @@ interface FilterProps {
     cashbacks: boolean;
     refer: boolean;
   };
+  filterByStatus: {
+    successful: boolean;
+    pending: boolean;
+    failed: boolean;
+  };
 }
 
 const initialState: FilterProps = {
   isFilter: false,
   isTransactionType: false,
+  isTransactionStatus: false,
   filter: {
     store: true,
     tipped: true,
@@ -23,6 +30,11 @@ const initialState: FilterProps = {
     chargebacks: true,
     cashbacks: true,
     refer: true,
+  },
+  filterByStatus: {
+    successful: true,
+    pending: true,
+    failed: true,
   },
 };
 
@@ -48,6 +60,20 @@ const filterSlice = createSlice({
         ...payload,
       };
     },
+
+    // Transaction Status
+    toggleTransactionStatus: (state) => {
+      state.isTransactionStatus = !state.isTransactionStatus;
+    },
+    checkedInputForStatus: (state, { payload }) => {
+      state.filterByStatus = {
+        ...state.filterByStatus,
+        ...payload,
+      };
+    },
+    closeTransactionStatus: (state) => {
+      state.isTransactionStatus = false;
+    },
   },
 });
 
@@ -59,4 +85,7 @@ export const {
   toggleTransactionType,
   closeTransactionType,
   checkedInput,
+  toggleTransactionStatus,
+  checkedInputForStatus,
+  closeTransactionStatus,
 } = filterSlice.actions;

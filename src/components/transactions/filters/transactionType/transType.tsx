@@ -2,7 +2,10 @@ import { TypeDropdown } from "..";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../store";
-import { toggleTransactionType } from "../../../../management/features/filtersSlice";
+import {
+  closeTransactionStatus,
+  toggleTransactionType,
+} from "../../../../management/features/filtersSlice";
 import { transactionTypeData } from "../../../../utils/data";
 import { useEffect, useState } from "react";
 
@@ -12,8 +15,6 @@ const TransType = () => {
   );
 
   const [transArr, setTransArr] = useState<string[]>([]);
-
-  //   const {type} = transactionTypeData
 
   const { store, tipped, withdrawals, chargebacks, cashbacks, refer } = filter;
 
@@ -28,6 +29,7 @@ const TransType = () => {
   //   HANDLE CHANGE FOR THE TRANSACTION TYPE
   const handleTransTypeClick = () => {
     dispatch(toggleTransactionType());
+    dispatch(closeTransactionStatus());
   };
 
   //   USE THIS FUNCTION TO HANDLE CHECKED DATA IN THE TRANSACTION TYPE INPUT FIELD

@@ -77,3 +77,21 @@ export const transactionTypeData = [
     name: "refer",
   },
 ];
+
+export const transactionStatusData = [
+  {
+    id: 1,
+    type: "Successful",
+    name: "successful",
+  },
+  {
+    id: 2,
+    type: "Pending",
+    name: "pending",
+  },
+  {
+    id: 3,
+    type: "Failed",
+    name: "failed",
+  },
+];

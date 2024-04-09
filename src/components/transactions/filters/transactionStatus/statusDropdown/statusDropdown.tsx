@@ -1,34 +1,36 @@
 import { useDispatch, useSelector } from "react-redux";
-import { transactionTypeData } from "../../../../../utils/data";
+import { transactionStatusData } from "../../../../../utils/data";
 import { AppDispatch, RootState } from "../../../../../store";
-import { checkedInput } from "../../../../../management/features/filtersSlice";
 import { ChangeEvent } from "react";
+import { checkedInputForStatus } from "../../../../../management/features/filtersSlice";
 
-const TypeDropdown = () => {
-  const { filter } = useSelector((store: RootState) => store.filterStore);
+const StatusDropdown = () => {
+  const { filterByStatus } = useSelector(
+    (store: RootState) => store.filterStore
+  );
 
   const dispatch = useDispatch<AppDispatch>();
 
-  // HANDLE INPUT CHANGE
-  const handleTransactionType = (e: ChangeEvent<HTMLInputElement>) => {
+  //   HANDLE INPUT CHANGE
+  const handleTransactionStatus = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const checked = e.target.checked;
     // console.log(name, checked);
-    dispatch(checkedInput({ [name]: checked }));
+    dispatch(checkedInputForStatus({ [name]: checked }));
   };
 
   return (
     <div className="px-4 pb-3 shadow-lg rounded-xl">
-      {transactionTypeData.map((each) => {
+      {transactionStatusData.map((each) => {
         const { id, type, name } = each;
         return (
           <div className="cursor-pointer flex gap-3 mt-6" key={id}>
             <input
               type="checkbox"
-              checked={filter[name as keyof typeof filter]}
+              checked={filterByStatus[name as keyof typeof filterByStatus]}
               id={type}
               name={name}
-              onChange={handleTransactionType}
+              onChange={handleTransactionStatus}
               className="scale-110 cursor-pointer focus:outline-none accent-black"
             />
             <label htmlFor={type} className="w-full cursor-pointer">
@@ -41,4 +43,4 @@ const TypeDropdown = () => {
   );
 };
 
-export default TypeDropdown;
+export default StatusDropdown;
