@@ -35,19 +35,41 @@ const filteringSlice = createSlice({
   initialState,
   reducers: {
     toggleActiveToday: (state) => {
-      state.dateClickFilter.today = !state.dateClickFilter.today;
+      state.dateClickFilter = {
+        today: !state.dateClickFilter.today,
+        lastSevenDays: false,
+        thisMonth: false,
+        lastThreeDays: false,
+      };
     },
-    todayValue: (state, { payload }) => {
+    toggleActiveLastSeven: (state) => {
+      state.dateClickFilter = {
+        today: false,
+        lastSevenDays: !state.dateClickFilter.lastSevenDays,
+        thisMonth: false,
+        lastThreeDays: false,
+      };
+    },
+
+    allValues: (state, { payload }) => {
       if (state.dateClickFilter.today) {
         state.dateClickValues.today = payload;
-      } else {
-        state.dateClickValues.today = "";
+        state.dateClickValues.lastSevenDays = "";
+        return;
       }
-      //   console.log(state.dateClickValues.today);
+      if (state.dateClickFilter.lastSevenDays) {
+        state.dateClickValues.lastSevenDays = payload;
+        state.dateClickValues.today = "";
+        return;
+      }
+      state.dateClickValues.today = "";
+      state.dateClickValues.lastSevenDays = "";
+      console.log(payload);
     },
   },
 });
 
 export default filteringSlice.reducer;
 
-export const { toggleActiveToday, todayValue } = filteringSlice.actions;
+export const { toggleActiveToday, toggleActiveLastSeven, allValues } =
+  filteringSlice.actions;

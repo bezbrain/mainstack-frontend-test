@@ -23,8 +23,9 @@ const FilterBtns = () => {
     dispatch(closeFilter());
     dispatch(closeTransactionType());
     dispatch(closeTransactionStatus());
-    if (today) {
-      dispatch(initiateFilters(today));
+
+    if (today || lastSevenDays) {
+      dispatch(initiateFilters({ today, lastSevenDays })); // Initialize the function to get today's transactions only if a user selects "today" in the filter
     } else {
       dispatch(allTransactions());
     }

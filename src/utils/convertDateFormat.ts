@@ -78,3 +78,11 @@ export const numberFormat = (value: Date) => {
   // console.log(formattedDate); // Output: 2024-04-09
   return formattedDate;
 };
+
+// DATE IN THE FORMAT e.g. 1709424000000
+export const completeNumberFormat = (value: string) => {
+  const dateObject = new Date(value);
+  const numericDate = dateObject.getTime();
+
+  return numericDate;
+};
