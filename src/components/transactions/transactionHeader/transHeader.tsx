@@ -1,8 +1,17 @@
 import { FaAngleDown } from "react-icons/fa6";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { Button } from "../../general/button";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../store";
+import { openFilter } from "../../../management/features/filtersSlice";
 
 const TransHeader = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleShowFilter = () => {
+    dispatch(openFilter());
+  };
+
   return (
     <header className="justify-between sm:flex">
       {/* Left hand side */}
@@ -14,7 +23,11 @@ const TransHeader = () => {
       </div>
       {/* Right hand side */}
       <div className="flex gap-4 mt-3 sm:mt-0">
-        <Button btnContent="Filter" icon={<FaAngleDown />} />
+        <Button
+          btnContent="Filter"
+          icon={<FaAngleDown />}
+          handleClick={handleShowFilter}
+        />
         <Button btnContent="Export list" icon={<MdOutlineFileDownload />} />
       </div>
     </header>

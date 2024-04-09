@@ -1,5 +1,6 @@
 import { SectionWrapper } from "../general/wrappers";
 import { AllTransactions, TransHeader } from ".";
+import { Filter } from "./filters";
 
 const Transactions = () => {
   return (
@@ -9,6 +10,8 @@ const Transactions = () => {
       <hr className="mt-4 mb-6" />
 
       <AllTransactions />
+
+      <Filter />
     </SectionWrapper>
   );
 };

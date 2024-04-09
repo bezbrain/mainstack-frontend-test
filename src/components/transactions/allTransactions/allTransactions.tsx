@@ -5,6 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../store";
 import allTransactions from "../../../management/action/transactions.action";
 import { TransactionProps } from "../../../management/features/transactionSlice";
+import {
+  closeFilter,
+  closeTransactionType,
+} from "../../../management/features/filtersSlice";
 
 const AllTransactions = () => {
   const { istransLoading, transactions } = useSelector(
@@ -16,6 +20,12 @@ const AllTransactions = () => {
     TransactionProps["transactions"]
   >([]);
 
+  // CLOSE THE FILTER SIDE BAR AND THE TRANSACTION TYPE DROP DOWN
+  const handleAllTranasctionClick = () => {
+    dispatch(closeFilter());
+    dispatch(closeTransactionType());
+  };
+
   // GET ALL TRANSACTIONS
   useEffect(() => {
     dispatch(allTransactions());
@@ -26,13 +36,12 @@ const AllTransactions = () => {
     const sortedTransactions = [...transactions].sort(
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
-
     // console.log(sortedTransactions);
     setSortTransactions(sortedTransactions);
   }, [transactions]);
 
   return (
-    <>
+    <div onClick={handleAllTranasctionClick}>
       {istransLoading ? (
         <TransactionLoader />
       ) : (
@@ -53,7 +62,7 @@ const AllTransactions = () => {
           })}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
