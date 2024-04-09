@@ -7,8 +7,6 @@ import { ChangeEvent } from "react";
 const TypeDropdown = () => {
   const { filter } = useSelector((store: RootState) => store.filterStore);
 
-  //   const { store, tipped, withdrawals, chargebacks, cashbacks, refer } = filter;
-
   const dispatch = useDispatch<AppDispatch>();
 
   const handleTransactionType = (e: ChangeEvent<HTMLInputElement>) => {
