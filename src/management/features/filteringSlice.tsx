@@ -5,13 +5,13 @@ interface FilteringProps {
     today: boolean;
     lastSevenDays: boolean;
     thisMonth: boolean;
-    lastThreeDays: boolean;
+    lastThreeMonths: boolean;
   };
   dateClickValues: {
     today: string;
     lastSevenDays: string;
     thisMonth: string;
-    lastThreeDays: string;
+    lastThreeMonths: string;
   };
 }
 
@@ -20,13 +20,13 @@ const initialState: FilteringProps = {
     today: false,
     lastSevenDays: false,
     thisMonth: false,
-    lastThreeDays: false,
+    lastThreeMonths: false,
   },
   dateClickValues: {
     today: "",
     lastSevenDays: "",
     thisMonth: "",
-    lastThreeDays: "",
+    lastThreeMonths: "",
   },
 };
 
@@ -39,7 +39,7 @@ const filteringSlice = createSlice({
         today: !state.dateClickFilter.today,
         lastSevenDays: false,
         thisMonth: false,
-        lastThreeDays: false,
+        lastThreeMonths: false,
       };
     },
     toggleActiveLastSeven: (state) => {
@@ -47,7 +47,15 @@ const filteringSlice = createSlice({
         today: false,
         lastSevenDays: !state.dateClickFilter.lastSevenDays,
         thisMonth: false,
-        lastThreeDays: false,
+        lastThreeMonths: false,
+      };
+    },
+    toggleActiveThisMonth: (state) => {
+      state.dateClickFilter = {
+        today: false,
+        lastSevenDays: false,
+        thisMonth: !state.dateClickFilter.thisMonth,
+        lastThreeMonths: false,
       };
     },
 
@@ -55,21 +63,34 @@ const filteringSlice = createSlice({
       if (state.dateClickFilter.today) {
         state.dateClickValues.today = payload;
         state.dateClickValues.lastSevenDays = "";
+        state.dateClickValues.thisMonth = "";
         return;
       }
       if (state.dateClickFilter.lastSevenDays) {
         state.dateClickValues.lastSevenDays = payload;
         state.dateClickValues.today = "";
+        state.dateClickValues.thisMonth = "";
+        return;
+      }
+      if (state.dateClickFilter.thisMonth) {
+        state.dateClickValues.thisMonth = payload;
+        state.dateClickValues.today = "";
+        state.dateClickValues.lastSevenDays = "";
         return;
       }
       state.dateClickValues.today = "";
       state.dateClickValues.lastSevenDays = "";
-      console.log(payload);
+      state.dateClickValues.thisMonth = "";
+      //   console.log(payload);
     },
   },
 });
 
 export default filteringSlice.reducer;
 
-export const { toggleActiveToday, toggleActiveLastSeven, allValues } =
-  filteringSlice.actions;
+export const {
+  toggleActiveToday,
+  toggleActiveLastSeven,
+  toggleActiveThisMonth,
+  allValues,
+} = filteringSlice.actions;

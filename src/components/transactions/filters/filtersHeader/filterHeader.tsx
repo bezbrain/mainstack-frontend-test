@@ -4,6 +4,7 @@ import { AppDispatch, RootState } from "../../../../store";
 import {
   allValues,
   toggleActiveLastSeven,
+  toggleActiveThisMonth,
   toggleActiveToday,
 } from "../../../../management/features/filteringSlice";
 import { numberFormat } from "../../../../utils/convertDateFormat";
@@ -16,7 +17,7 @@ const FilterHeader = () => {
     (store: RootState) => store.filteringStore
   );
 
-  const { today, lastSevenDays, thisMonth, lastThreeDays } = dateClickFilter;
+  const { today, lastSevenDays, thisMonth, lastThreeMonths } = dateClickFilter;
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -37,13 +38,19 @@ const FilterHeader = () => {
 
     const date = new Date();
 
-    // console.log(date);
-
     date.setDate(date.getDate() - 7);
-
-    // console.log(date);
-
     dispatch(allValues(date));
+  };
+
+  // HANDLE CLICKING THE "THIS MONTH" FILTER BTN
+  const handleThisMonthClick = () => {
+    dispatch(toggleActiveThisMonth());
+
+    const date = new Date();
+
+    const currentMonth = date.getMonth() + 1; // Get the month
+
+    dispatch(allValues(currentMonth));
   };
 
   return (
@@ -62,7 +69,13 @@ const FilterHeader = () => {
         }`}
         handleClick={handleLastSevenClick}
       />
-      <Button btnContent="This month" btnStyle={`${btnFilterStyle}`} />
+      <Button
+        btnContent="This month"
+        btnStyle={`${btnFilterStyle} ${
+          thisMonth ? "bg-[#141417] hover:bg-[#141417] text-[#f5f5f7]" : ""
+        }`}
+        handleClick={handleThisMonthClick}
+      />
       <Button btnContent="Last 3 months" btnStyle={`${btnFilterStyle}`} />
     </header>
   );

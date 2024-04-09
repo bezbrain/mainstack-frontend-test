@@ -14,7 +14,7 @@ const FilterBtns = () => {
     (store: RootState) => store.filteringStore
   );
 
-  const { today, lastSevenDays, thisMonth, lastThreeDays } = dateClickValues;
+  const { today, lastSevenDays, thisMonth, lastThreeMonths } = dateClickValues;
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -24,8 +24,8 @@ const FilterBtns = () => {
     dispatch(closeTransactionType());
     dispatch(closeTransactionStatus());
 
-    if (today || lastSevenDays) {
-      dispatch(initiateFilters({ today, lastSevenDays })); // Initialize the function to get today's transactions only if a user selects "today" in the filter
+    if (today || lastSevenDays || thisMonth) {
+      dispatch(initiateFilters({ today, lastSevenDays, thisMonth })); // Initialize the function to get today's transactions only if a user selects "today" in the filter
     } else {
       dispatch(allTransactions());
     }
