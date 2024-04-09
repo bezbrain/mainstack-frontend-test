@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TransactionCard } from "..";
+import { NotFound, TransactionCard } from "..";
 import { TransactionLoader } from "../../helpers/skeleton-loaders";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../store";
@@ -41,6 +41,10 @@ const AllTransactions = () => {
     // console.log(sortedTransactions);
     setSortTransactions(sortedTransactions);
   }, [transactions]);
+
+  if (transactions.length > 0) {
+    return <NotFound />;
+  }
 
   return (
     <div onClick={handleAllTranasctionClick}>

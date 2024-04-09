@@ -15,7 +15,9 @@ const TransHeader = () => {
 
   const handleShowFilter = () => {
     if (istransLoading) {
-      toast.error("Please let all transactions load completely");
+      toast.error(
+        "Please let all transactions load completely. You may reload page."
+      );
       return;
     }
     dispatch(openFilter());
