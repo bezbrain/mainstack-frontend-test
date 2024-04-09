@@ -1,5 +1,5 @@
 import { IoCloseSharp } from "react-icons/io5";
-import { DateRange, FilterHeader, TransType } from ".";
+import { DateRange, FilterBtns, FilterHeader, TransType } from ".";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../store";
 import { closeFilter } from "../../../management/features/filtersSlice";
@@ -12,27 +12,31 @@ const Filter = () => {
     isFilter
       ? "w-[456px] transition-all duration-1000"
       : "-right-[900px] transition-all duration-1000"
-  } min-h-[100vh] bg-white rounded-2xl p-4`;
+  } min-h-[100vh] bg-white rounded-2xl p-4 flex flex-col justify-between gap-20 pb-6 overflow-y-auto overflow-x-hidden`;
 
   const dispatch = useDispatch<AppDispatch>();
 
   return (
     <div className={filterContainerFilter}>
-      <header className="flex items-center justify-between text-[24px]">
-        <h1 className="text-[#000] font-extrabold">Filter</h1>
-        <IoCloseSharp
-          className="cursor-pointer text-3xl"
-          onClick={() => dispatch(closeFilter())}
-        />
-      </header>
+      <div>
+        <header className="flex items-center justify-between text-[24px]">
+          <h1 className="text-[#000] font-extrabold">Filter</h1>
+          <IoCloseSharp
+            className="cursor-pointer text-3xl"
+            onClick={() => dispatch(closeFilter())}
+          />
+        </header>
 
-      <FilterHeader />
+        <FilterHeader />
 
-      <DateRange />
+        <DateRange />
 
-      <TransType />
+        <TransType />
 
-      <TransStatus />
+        <TransStatus />
+      </div>
+
+      <FilterBtns />
     </div>
   );
 };
