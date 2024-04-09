@@ -58,29 +58,48 @@ const filteringSlice = createSlice({
         lastThreeMonths: false,
       };
     },
+    toggleActiveLastThreeMonths: (state) => {
+      state.dateClickFilter = {
+        today: false,
+        lastSevenDays: false,
+        thisMonth: false,
+        lastThreeMonths: !state.dateClickFilter.lastThreeMonths,
+      };
+    },
 
     allValues: (state, { payload }) => {
       if (state.dateClickFilter.today) {
         state.dateClickValues.today = payload;
         state.dateClickValues.lastSevenDays = "";
         state.dateClickValues.thisMonth = "";
+        state.dateClickValues.lastThreeMonths = "";
         return;
       }
       if (state.dateClickFilter.lastSevenDays) {
         state.dateClickValues.lastSevenDays = payload;
         state.dateClickValues.today = "";
         state.dateClickValues.thisMonth = "";
+        state.dateClickValues.lastThreeMonths = "";
         return;
       }
       if (state.dateClickFilter.thisMonth) {
         state.dateClickValues.thisMonth = payload;
         state.dateClickValues.today = "";
         state.dateClickValues.lastSevenDays = "";
+        state.dateClickValues.lastThreeMonths = "";
+        return;
+      }
+      if (state.dateClickFilter.lastThreeMonths) {
+        state.dateClickValues.lastThreeMonths = payload;
+        state.dateClickValues.today = "";
+        state.dateClickValues.lastSevenDays = "";
+        state.dateClickValues.thisMonth = "";
         return;
       }
       state.dateClickValues.today = "";
       state.dateClickValues.lastSevenDays = "";
       state.dateClickValues.thisMonth = "";
+      state.dateClickValues.lastThreeMonths = "";
       //   console.log(payload);
     },
   },
@@ -92,5 +111,6 @@ export const {
   toggleActiveToday,
   toggleActiveLastSeven,
   toggleActiveThisMonth,
+  toggleActiveLastThreeMonths,
   allValues,
 } = filteringSlice.actions;
