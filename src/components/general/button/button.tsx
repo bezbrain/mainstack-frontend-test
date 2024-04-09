@@ -8,6 +8,7 @@ interface ButtonProps {
   btnConStyle?: string;
   iconStyle?: string;
   handleClick?: () => void;
+  isDisable?: boolean;
 }
 
 const Button = ({
@@ -17,10 +18,11 @@ const Button = ({
   btnConStyle,
   iconStyle,
   handleClick,
+  isDisable,
 }: ButtonProps) => {
   return (
     <ButtonWrapper className={btnConStyle}>
-      <button className={btnStyle} onClick={handleClick}>
+      <button className={btnStyle} onClick={handleClick} disabled={isDisable}>
         <span className={iconStyle}>{btnContent}</span>
         {icon}
       </button>

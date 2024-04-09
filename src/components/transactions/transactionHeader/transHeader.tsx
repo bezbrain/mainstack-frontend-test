@@ -1,14 +1,23 @@
 import { FaAngleDown } from "react-icons/fa6";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { Button } from "../../general/button";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../store";
 import { openFilter } from "../../../management/features/filtersSlice";
+import { toast } from "react-toastify";
 
 const TransHeader = () => {
+  const { istransLoading } = useSelector(
+    (store: RootState) => store.transactionStore
+  );
+
   const dispatch = useDispatch<AppDispatch>();
 
   const handleShowFilter = () => {
+    if (istransLoading) {
+      toast.error("Please let all transactions load completely");
+      return;
+    }
     dispatch(openFilter());
   };
 

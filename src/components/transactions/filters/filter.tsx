@@ -26,13 +26,9 @@ const Filter = () => {
             onClick={() => dispatch(closeFilter())}
           />
         </header>
-
         <FilterHeader />
-
         <DateRange />
-
         <TransType />
-
         <TransStatus />
       </div>
 
