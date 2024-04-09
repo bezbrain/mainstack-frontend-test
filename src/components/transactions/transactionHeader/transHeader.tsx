@@ -7,7 +7,7 @@ import { openFilter } from "../../../management/features/filtersSlice";
 import { toast } from "react-toastify";
 
 const TransHeader = () => {
-  const { istransLoading } = useSelector(
+  const { istransLoading, transactions } = useSelector(
     (store: RootState) => store.transactionStore
   );
 
@@ -15,7 +15,9 @@ const TransHeader = () => {
 
   const handleShowFilter = () => {
     if (istransLoading) {
-      toast.error("Please let all transactions load completely");
+      toast.error(
+        "Please let all transactions load completely. You may reload page."
+      );
       return;
     }
     dispatch(openFilter());
@@ -26,7 +28,7 @@ const TransHeader = () => {
       {/* Left hand side */}
       <div className="leading-6">
         <h1 className="text-[24px] font-extrabold text-[#000]">
-          <span>24</span> Transactions
+          <span>{istransLoading ? 0 : transactions?.length}</span> Transactions
         </h1>
         <p className="text-[14px]">Your transactions for the last 7 days</p>
       </div>

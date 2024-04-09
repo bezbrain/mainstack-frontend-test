@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { TransactionCard } from "..";
+import { NotFound, TransactionCard } from "..";
 import { TransactionLoader } from "../../helpers/skeleton-loaders";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../store";
 import allTransactions from "../../../management/action/transactions.action";
-import { TransactionProps } from "../../../management/features/transactionSlice";
+import {
+  TransactionProps,
+  initiateFilters,
+} from "../../../management/features/transactionSlice";
 import {
   closeFilter,
   closeTransactionStatus,
@@ -41,6 +44,10 @@ const AllTransactions = () => {
     // console.log(sortedTransactions);
     setSortTransactions(sortedTransactions);
   }, [transactions]);
+
+  if (transactions.length === 0) {
+    return <NotFound />;
+  }
 
   return (
     <div onClick={handleAllTranasctionClick}>

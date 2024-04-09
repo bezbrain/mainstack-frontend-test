@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import allTransactions from "../action/transactions.action";
 import { serverMessage } from "../../utils/serverMessage";
 import { toast } from "react-toastify";
+import { completeNumberFormat } from "../../utils/convertDateFormat";
 
 export interface TransactionProps {
   istransLoading: boolean;
@@ -47,7 +48,27 @@ const transactionSlice = createSlice({
   name: "transactions",
   initialState,
   reducers: {
-    //
+    initiateFilters: (state, { payload }) => {
+      // console.log(payload);
+      const { today, lastSevenDays, thisMonth } = payload;
+      const filterByToday = state.transactions.filter((each) => {
+        const getMonth = new Date(each.date).getMonth() + 1;
+        // console.log(getMonth);
+        // console.log(thisMonth);
+
+        if (today) {
+          return each.date === today;
+        }
+        if (lastSevenDays) {
+          return completeNumberFormat(each.date) >= lastSevenDays;
+        }
+        if (thisMonth) {
+          return getMonth == thisMonth;
+        }
+      });
+      console.log(filterByToday);
+      state.transactions = filterByToday;
+    },
   },
 
   extraReducers: (builder) => {
@@ -67,3 +88,5 @@ const transactionSlice = createSlice({
 });
 
 export default transactionSlice.reducer;
+
+export const { initiateFilters } = transactionSlice.actions;
