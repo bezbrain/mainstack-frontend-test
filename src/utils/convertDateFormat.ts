@@ -1,5 +1,6 @@
 import { Value } from "../components/transactions/filters/dateRange/dateRange";
 
+// DATE IN THE FORMAT e.g. Apr 9, 2024
 export const formatDate = (inputDate: string) => {
   const date = new Date(inputDate);
 
@@ -34,6 +35,7 @@ export const formatDate = (inputDate: string) => {
   return formattedDate;
 };
 
+// CALENDAR IN THE FORMAT e.g 9 Apr 2024
 export const calendarFormat = (value: Value) => {
   if (value !== null && !(value instanceof Array)) {
     const date = new Date(value);
@@ -62,4 +64,17 @@ export const calendarFormat = (value: Value) => {
     // console.log(day, month, year);
     return { day, month, year };
   }
+};
+
+// DATE IN THE FORMAT e.g. 2024-04-09
+export const numberFormat = (value: Date) => {
+  const date = new Date(value);
+
+  const year = date.getFullYear();
+  const month = ("0" + (date.getMonth() + 1)).slice(-2); // Adding 1 because months are zero-based
+  const day = ("0" + date.getDate()).slice(-2);
+
+  const formattedDate = `${year}-${month}-${day}`;
+  // console.log(formattedDate); // Output: 2024-04-09
+  return formattedDate;
 };

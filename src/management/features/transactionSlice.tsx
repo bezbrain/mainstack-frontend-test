@@ -47,7 +47,14 @@ const transactionSlice = createSlice({
   name: "transactions",
   initialState,
   reducers: {
-    //
+    initiateFilters: (state, { payload }) => {
+      console.log(payload);
+      const filterByToday = state.transactions.filter((each) => {
+        return each.date === payload;
+      });
+      console.log(filterByToday);
+      state.transactions = filterByToday;
+    },
   },
 
   extraReducers: (builder) => {
@@ -67,3 +74,5 @@ const transactionSlice = createSlice({
 });
 
 export default transactionSlice.reducer;
+
+export const { initiateFilters } = transactionSlice.actions;

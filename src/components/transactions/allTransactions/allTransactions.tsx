@@ -4,7 +4,10 @@ import { TransactionLoader } from "../../helpers/skeleton-loaders";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../store";
 import allTransactions from "../../../management/action/transactions.action";
-import { TransactionProps } from "../../../management/features/transactionSlice";
+import {
+  TransactionProps,
+  initiateFilters,
+} from "../../../management/features/transactionSlice";
 import {
   closeFilter,
   closeTransactionStatus,
