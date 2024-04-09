@@ -15,6 +15,11 @@ import { NavProfileBtn } from "../helpers/skeleton-loaders";
 import { ProfileDropdown } from "./profileDropdown";
 import userProfile from "../../management/action/userProfile.action";
 import { getFirstLetter } from "../../utils/extractFirstCase";
+import {
+  closeFilter,
+  closeTransactionStatus,
+  closeTransactionType,
+} from "../../management/features/filtersSlice";
 
 // White color: #f5f5f7
 // Black color: #56616b
@@ -38,6 +43,13 @@ const NavBar = () => {
     dispatch(openNav());
   };
 
+  // CLOSE FILTER SIDE BAR
+  const handleCloseSideFilter = () => {
+    dispatch(closeFilter());
+    dispatch(closeTransactionType());
+    dispatch(closeTransactionStatus());
+  };
+
   //   CLOSE THE NAV BAR
   const handleNavCloseClick = () => {
     setIsToggle(false);
@@ -50,7 +62,10 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className={navStyles(navIsOpen).navBarStyle}>
+    <nav
+      className={navStyles(navIsOpen).navBarStyle}
+      onClick={handleCloseSideFilter}
+    >
       {/* Logo */}
       <a href="/" className="order-1 absolute iPad:order-1 iPad:static">
         <img src={mainstackLogo} alt="Mainstack" />

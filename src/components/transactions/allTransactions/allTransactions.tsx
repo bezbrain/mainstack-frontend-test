@@ -7,6 +7,7 @@ import allTransactions from "../../../management/action/transactions.action";
 import { TransactionProps } from "../../../management/features/transactionSlice";
 import {
   closeFilter,
+  closeTransactionStatus,
   closeTransactionType,
 } from "../../../management/features/filtersSlice";
 
@@ -24,6 +25,7 @@ const AllTransactions = () => {
   const handleAllTranasctionClick = () => {
     dispatch(closeFilter());
     dispatch(closeTransactionType());
+    dispatch(closeTransactionStatus());
   };
 
   // GET ALL TRANSACTIONS

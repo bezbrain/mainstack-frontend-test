@@ -4,6 +4,7 @@ import { SectionWrapper } from "../general/wrappers";
 import { AppDispatch } from "../../store";
 import {
   closeFilter,
+  closeTransactionStatus,
   closeTransactionType,
 } from "../../management/features/filtersSlice";
 
@@ -14,6 +15,7 @@ const Hero = () => {
   const handleHeroClick = () => {
     dispatch(closeFilter());
     dispatch(closeTransactionType());
+    dispatch(closeTransactionStatus());
   };
 
   return (
