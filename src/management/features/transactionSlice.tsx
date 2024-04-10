@@ -3,6 +3,7 @@ import allTransactions from "../action/transactions.action";
 import { serverMessage } from "../../utils/serverMessage";
 import { toast } from "react-toastify";
 import { completeNumberFormat } from "../../utils/convertDateFormat";
+import { transactionTypeData } from "../../utils/data";
 
 export interface TransactionProps {
   istransLoading: boolean;
@@ -119,6 +120,14 @@ const transactionSlice = createSlice({
         state.transactions = thisMonthArr;
         return;
       }
+
+      // Transaction Type filter
+      const filterType = state.originalTransactions.filter((each) => {
+        //
+      });
+      transactionTypeData.forEach((each) => {
+        //
+      });
     },
   },
 
