@@ -14,6 +14,8 @@ const FilterBtns = () => {
     (store: RootState) => store.filteringStore
   );
 
+  const { typeSelected } = useSelector((store: RootState) => store.filterStore);
+
   const { today, lastSevenDays, thisMonth, lastThreeMonths } = dateClickValues;
 
   const { startDate, endDate } = dateRangeValue;
@@ -42,6 +44,7 @@ const FilterBtns = () => {
           lastThreeMonths,
           startDate,
           endDate,
+          typeSelected,
         })
       );
     } else {

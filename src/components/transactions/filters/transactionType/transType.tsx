@@ -4,17 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../store";
 import {
   closeTransactionStatus,
+  selectedType,
   toggleTransactionType,
 } from "../../../../management/features/filtersSlice";
 import { transactionTypeData } from "../../../../utils/data";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const TransType = () => {
-  const { isTransactionType, filter } = useSelector(
+  const { isTransactionType, filter, typeSelected } = useSelector(
     (store: RootState) => store.filterStore
   );
-
-  const [transArr, setTransArr] = useState<string[]>([]);
 
   const { store, tipped, withdrawals, chargebacks, cashbacks, refer } = filter;
 
@@ -71,7 +70,7 @@ const TransType = () => {
       }
     }
 
-    setTransArr(updateTransArr);
+    dispatch(selectedType(updateTransArr));
   };
 
   useEffect(() => {
@@ -86,7 +85,7 @@ const TransType = () => {
         <input
           type="text"
           className={inputStyle}
-          value={`${transArr.join(", ")}`}
+          value={typeSelected}
           readOnly
         />
         {!isTransactionType && (
