@@ -119,6 +119,12 @@ const filteringSlice = createSlice({
       // console.log(payload);
       state.dateRangeValue.endDate = payload;
     },
+
+    clearFilter: (state) => {
+      state.dateClickFilter = initialState.dateClickFilter;
+      state.dateClickValues = initialState.dateClickValues;
+      state.dateRangeValue = initialState.dateRangeValue;
+    },
   },
 });
 
@@ -132,4 +138,5 @@ export const {
   allValues,
   startDateRange,
   endDateRange,
+  clearFilter,
 } = filteringSlice.actions;

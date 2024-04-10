@@ -9,7 +9,7 @@ const allTransactions = createAsyncThunk(
       //   console.log(data);
       return data;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return thunkAPI.rejectWithValue(error);
     }
   }

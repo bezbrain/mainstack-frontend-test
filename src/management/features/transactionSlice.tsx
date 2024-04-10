@@ -3,7 +3,6 @@ import allTransactions from "../action/transactions.action";
 import { serverMessage } from "../../utils/serverMessage";
 import { toast } from "react-toastify";
 import { completeNumberFormat } from "../../utils/convertDateFormat";
-import { transactionTypeData } from "../../utils/data";
 import { toCapitalLetter } from "../../utils/toCapitalLetter";
 
 export interface TransactionProps {
@@ -111,11 +110,11 @@ const transactionSlice = createSlice({
       // console.log(filterType);
       state.transactions = filterType;
 
-      // Transaction Type filter
+      // Transaction Status filter
       const filterStatus = state.originalTransactions.filter((each) => {
         return statusSelected.includes(toCapitalLetter(each.status));
       });
-      console.log(filterStatus);
+      // console.log(filterStatus);
       state.transactions = filterStatus;
 
       // Filter based on today's date

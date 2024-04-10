@@ -9,19 +9,22 @@ import {
   endDateRange,
   startDateRange,
 } from "../../../../management/features/filteringSlice";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../../../store";
-
-type ValuePiece = Date | null;
-export type Value = ValuePiece | [ValuePiece, ValuePiece];
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../../store";
+import {
+  Value,
+  endDateValue,
+  startDateValue,
+} from "../../../../management/features/filtersSlice";
 
 const DateRange = () => {
+  const {
+    date: { startValue, endValue },
+  } = useSelector((store: RootState) => store.filterStore);
+
   const [isStartCloseCalendar, setIsStartCloseCalendar] = useState(true);
 
   const [isEndCloseCalendar, setIsEndCloseCalendar] = useState(true);
-
-  const [startValue, setStartValue] = useState<Value>(new Date());
-  const [endValue, setEndValue] = useState<Value>(new Date());
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -47,6 +50,14 @@ const DateRange = () => {
     return reason === "focus";
   };
 
+  const handleStartDateChange = (startValue: Value) => {
+    dispatch(startDateValue(startValue));
+  };
+
+  const handleEndDateChange = (endValue: Value) => {
+    dispatch(endDateValue(endValue));
+  };
+
   useEffect(() => {
     dispatch(startDateRange(startValue));
     dispatch(endDateRange(endValue));
@@ -68,7 +79,7 @@ const DateRange = () => {
             disabled={true}
             onClick={handleStartCalenderClick}
             value={startValue}
-            onChange={setStartValue}
+            onChange={handleStartDateChange}
             onCalendarClose={() => setIsStartCloseCalendar(false)} // Close the start date calendar when it is closed
             onCalendarOpen={() => setIsStartCloseCalendar(true)}
             shouldOpenCalendar={shouldOpenCalendar}
@@ -88,7 +99,7 @@ const DateRange = () => {
             disabled={true}
             onClick={handleEndCalenderClick}
             value={endValue}
-            onChange={setEndValue}
+            onChange={handleEndDateChange}
             onCalendarClose={() => setIsEndCloseCalendar(false)} // Close the end date calendar when it is closed
             format="y-MM-dd"
           />

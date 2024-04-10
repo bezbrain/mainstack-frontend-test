@@ -1,4 +1,4 @@
-import { Value } from "../components/transactions/filters/dateRange/dateRange";
+import { Value } from "../management/features/filtersSlice";
 
 // DATE IN THE FORMAT e.g. Apr 9, 2024
 export const formatDate = (inputDate: string) => {
