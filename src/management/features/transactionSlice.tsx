@@ -4,6 +4,7 @@ import { serverMessage } from "../../utils/serverMessage";
 import { toast } from "react-toastify";
 import { completeNumberFormat } from "../../utils/convertDateFormat";
 import { transactionTypeData } from "../../utils/data";
+import { toCapitalLetter } from "../../utils/toCapitalLetter";
 
 export interface TransactionProps {
   istransLoading: boolean;
@@ -83,17 +84,31 @@ const transactionSlice = createSlice({
   reducers: {
     initiateFilters: (state, { payload }) => {
       // console.log(payload);
-      const { today, lastSevenDays, thisMonth, startDate, endDate } = payload;
+      const {
+        today,
+        lastSevenDays,
+        thisMonth,
+        startDate,
+        endDate,
+        typeSelected,
+      } = payload;
 
       // Filter based on start and end date
-      if (startDate && endDate) {
-        const filterBy = state.originalTransactions.filter((each) => {
-          const getArrDate = completeNumberFormat(each.date);
-          return getArrDate >= startDate && getArrDate <= endDate;
-        });
-        console.log(filterBy);
-        state.transactions = filterBy;
-      }
+      // if (startDate && endDate) {
+      //   const filterBy = state.originalTransactions.filter((each) => {
+      //     const getArrDate = completeNumberFormat(each.date);
+      //     return getArrDate >= startDate && getArrDate <= endDate;
+      //   });
+      //   console.log(filterBy);
+      //   state.transactions = filterBy;
+      // }
+
+      // Transaction Type filter
+      const filterType = state.originalTransactions.filter((each) => {
+        return typeSelected.includes(toCapitalLetter(each.type));
+      });
+      // console.log(filterType);
+      state.transactions = filterType;
 
       // Filter based on today's date
       if (today) {
@@ -120,14 +135,6 @@ const transactionSlice = createSlice({
         state.transactions = thisMonthArr;
         return;
       }
-
-      // Transaction Type filter
-      const filterType = state.originalTransactions.filter((each) => {
-        //
-      });
-      transactionTypeData.forEach((each) => {
-        //
-      });
     },
   },
 

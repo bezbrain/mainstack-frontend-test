@@ -8,14 +8,12 @@ import {
   toggleTransactionType,
 } from "../../../../management/features/filtersSlice";
 import { transactionTypeData } from "../../../../utils/data";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const TransType = () => {
   const { isTransactionType, filter, typeSelected } = useSelector(
     (store: RootState) => store.filterStore
   );
-
-  const [transArr, setTransArr] = useState<string[]>([]);
 
   const { store, tipped, withdrawals, chargebacks, cashbacks, refer } = filter;
 
@@ -72,7 +70,6 @@ const TransType = () => {
       }
     }
 
-    // setTransArr(updateTransArr);
     dispatch(selectedType(updateTransArr));
   };
 
