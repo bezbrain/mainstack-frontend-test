@@ -3,10 +3,13 @@ import { Button } from "../../general/button";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store";
 import {
+  clearAllFilter,
   closeFilter,
   closeTransactionStatus,
   closeTransactionType,
 } from "../../../management/features/filtersSlice";
+import allTransactions from "../../../management/action/transactions.action";
+import { clearFilter } from "../../../management/features/filteringSlice";
 
 const NotFound = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -18,7 +21,11 @@ const NotFound = () => {
   };
 
   const handleClearFilter = () => {
-    //
+    console.log("Clear");
+
+    dispatch(allTransactions());
+    dispatch(clearFilter());
+    dispatch(clearAllFilter());
   };
 
   return (

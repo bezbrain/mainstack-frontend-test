@@ -54,6 +54,7 @@ const TransStatus = () => {
         updateTransStatusArr.push(newStatus[2]);
       }
     }
+
     dispatch(selectedStatus(updateTransStatusArr));
     // setTransStatusArr(updateTransStatusArr);
   };

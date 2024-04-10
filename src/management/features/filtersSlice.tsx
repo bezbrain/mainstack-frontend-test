@@ -1,9 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+type ValuePiece = Date | null;
+export type Value = ValuePiece | [ValuePiece, ValuePiece];
+
+// const [startValue, setStartValue] = useState<Value>(new Date());
+// const [endValue, setEndValue] = useState<Value>(new Date());
+
 interface FilterProps {
   isFilter: boolean;
   isTransactionType: boolean;
   isTransactionStatus: boolean;
+  date: {
+    startValue: Value;
+    endValue: Value;
+  };
   filter: {
     store: boolean;
     tipped: boolean;
@@ -25,6 +35,10 @@ const initialState: FilterProps = {
   isFilter: false,
   isTransactionType: false,
   isTransactionStatus: false,
+  date: {
+    startValue: new Date(),
+    endValue: new Date(),
+  },
   filter: {
     store: true,
     tipped: true,
@@ -64,6 +78,16 @@ const filterSlice = createSlice({
         ...payload,
       };
     },
+
+    // Date Range
+    startDateValue: (state, { payload }) => {
+      state.date.startValue = payload;
+    },
+    endDateValue: (state, { payload }) => {
+      state.date.endValue = payload;
+    },
+
+    // Transaction Type
     selectedType: (state, { payload }) => {
       state.typeSelected = payload?.join(", ");
     },
@@ -84,6 +108,15 @@ const filterSlice = createSlice({
     closeTransactionStatus: (state) => {
       state.isTransactionStatus = false;
     },
+    clearAllFilter: (state) => {
+      // state = initialState;
+      Object.assign(state, {
+        ...initialState,
+        typeSelected: state.typeSelected,
+        statusSelected: state.statusSelected,
+      });
+      // console.log(state);
+    },
   },
 });
 
@@ -95,9 +128,12 @@ export const {
   toggleTransactionType,
   closeTransactionType,
   checkedInput,
+  startDateValue,
+  endDateValue,
   selectedType,
   selectedStatus,
   toggleTransactionStatus,
   checkedInputForStatus,
   closeTransactionStatus,
+  clearAllFilter,
 } = filterSlice.actions;
