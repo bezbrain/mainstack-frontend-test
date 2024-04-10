@@ -35,7 +35,7 @@ const TheChart = () => {
   ];
 
   return (
-    <ResponsiveContainer className="h-[400px] w-[600px] sm:w-full">
+    <ResponsiveContainer className="h-[300px] w-[600px] sm:w-full">
       <LineChart className="w-full" height={400} data={data}>
         <CartesianGrid vertical={false} horizontal={false} />
         <Line type="monotone" dataKey="count" stroke="#ffaa82" />

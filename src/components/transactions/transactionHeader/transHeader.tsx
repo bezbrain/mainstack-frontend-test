@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../store";
 import { openFilter } from "../../../management/features/filtersSlice";
 import { toast } from "react-toastify";
+import { showModal } from "../../../management/features/transactionSlice";
 
 const TransHeader = () => {
   const { istransLoading, transactions } = useSelector(
@@ -21,6 +22,7 @@ const TransHeader = () => {
       return;
     }
     dispatch(openFilter());
+    dispatch(showModal());
   };
 
   return (
