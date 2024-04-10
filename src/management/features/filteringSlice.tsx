@@ -13,6 +13,10 @@ interface FilteringProps {
     thisMonth: string;
     lastThreeMonths: string;
   };
+  dateRangeValue: {
+    startDate: string;
+    endDate: string;
+  };
 }
 
 const initialState: FilteringProps = {
@@ -27,6 +31,10 @@ const initialState: FilteringProps = {
     lastSevenDays: "",
     thisMonth: "",
     lastThreeMonths: "",
+  },
+  dateRangeValue: {
+    startDate: "",
+    endDate: "",
   },
 };
 
@@ -102,6 +110,15 @@ const filteringSlice = createSlice({
       state.dateClickValues.lastThreeMonths = "";
       //   console.log(payload);
     },
+
+    startDateRange: (state, { payload }) => {
+      // console.log(payload);
+      state.dateRangeValue.startDate = payload;
+    },
+    endDateRange: (state, { payload }) => {
+      // console.log(payload);
+      state.dateRangeValue.endDate = payload;
+    },
   },
 });
 
@@ -113,4 +130,6 @@ export const {
   toggleActiveThisMonth,
   toggleActiveLastThreeMonths,
   allValues,
+  startDateRange,
+  endDateRange,
 } = filteringSlice.actions;

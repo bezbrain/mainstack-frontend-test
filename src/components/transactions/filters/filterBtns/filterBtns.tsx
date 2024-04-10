@@ -10,11 +10,13 @@ import {
 } from "../../../../management/features/filtersSlice";
 
 const FilterBtns = () => {
-  const { dateClickValues } = useSelector(
+  const { dateClickValues, dateRangeValue } = useSelector(
     (store: RootState) => store.filteringStore
   );
 
   const { today, lastSevenDays, thisMonth, lastThreeMonths } = dateClickValues;
+
+  const { startDate, endDate } = dateRangeValue;
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -24,10 +26,24 @@ const FilterBtns = () => {
     dispatch(closeTransactionType());
     dispatch(closeTransactionStatus());
 
-    if (today || lastSevenDays || thisMonth || lastThreeMonths) {
+    if (
+      today ||
+      lastSevenDays ||
+      thisMonth ||
+      lastThreeMonths ||
+      startDate ||
+      endDate
+    ) {
       dispatch(
-        initiateFilters({ today, lastSevenDays, thisMonth, lastThreeMonths })
-      ); // Initialize the function to get today's transactions only if a user selects "today" in the filter
+        initiateFilters({
+          today,
+          lastSevenDays,
+          thisMonth,
+          lastThreeMonths,
+          startDate,
+          endDate,
+        })
+      );
     } else {
       dispatch(allTransactions());
     }
