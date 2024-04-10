@@ -8,9 +8,9 @@ import { TransStatus } from "..";
 const Filter = () => {
   const { isFilter } = useSelector((store: RootState) => store.filterStore);
 
-  const filterContainerFilter = `fixed right-1 top-1 bottom-4 z-20 border-2 ${
+  const filterContainerFilter = `fixed top-1 bottom-4 z-20 border-2 ${
     isFilter
-      ? "w-[456px] transition-all duration-1000"
+      ? "w-[456px] right-1 transition-all duration-1000"
       : "-right-[600px] transition-all duration-1000"
   } min-h-[100vh] bg-white rounded-2xl p-4 flex flex-col justify-between gap-20 pb-6 overflow-y-auto overflow-x-hidden`;
 
