@@ -6,6 +6,21 @@ import { completeNumberFormat } from "../../utils/convertDateFormat";
 
 export interface TransactionProps {
   istransLoading: boolean;
+  originalTransactions: {
+    amount: 0;
+    metadata: {
+      name: "";
+      type: "";
+      email: "";
+      quantity: 0;
+      country: "";
+      product_name: "";
+    };
+    payment_reference: "";
+    status: "";
+    type: "";
+    date: "";
+  }[];
   transactions: {
     amount: number;
     metadata?: {
@@ -25,6 +40,23 @@ export interface TransactionProps {
 
 const initialState: TransactionProps = {
   istransLoading: false,
+  originalTransactions: [
+    {
+      amount: 0,
+      metadata: {
+        name: "",
+        type: "",
+        email: "",
+        quantity: 0,
+        country: "",
+        product_name: "",
+      },
+      payment_reference: "",
+      status: "",
+      type: "",
+      date: "",
+    },
+  ],
   transactions: [
     {
       amount: 0,
@@ -50,24 +82,46 @@ const transactionSlice = createSlice({
   reducers: {
     initiateFilters: (state, { payload }) => {
       // console.log(payload);
-      const { today, lastSevenDays, thisMonth } = payload;
-      const filterByToday = state.transactions.filter((each) => {
-        const getMonth = new Date(each.date).getMonth() + 1;
-        // console.log(getMonth);
-        // console.log(thisMonth);
+      const { today, lastSevenDays, thisMonth, startDate, endDate } = payload;
+      console.log(payload);
+      console.log(state.transactions);
+      console.log(state.originalTransactions);
 
-        if (today) {
-          return each.date === today;
-        }
-        if (lastSevenDays) {
-          return completeNumberFormat(each.date) >= lastSevenDays;
-        }
-        if (thisMonth) {
-          return getMonth == thisMonth;
-        }
+      const filterBy = state.transactions.filter((each) => {
+        const getArrDate = completeNumberFormat(each.date);
+        // if (startDate && endDate) {
+        //   console.log(getArrDate);
+        //   console.log(startDate);
+        //   console.log(endDate);
+
+        //   return getArrDate >= startDate && getArrDate <= endDate;
+        // }
       });
-      console.log(filterByToday);
-      state.transactions = filterByToday;
+      console.log(filterBy);
+      state.transactions = filterBy;
+
+      if (today) {
+        const todayArr = state.originalTransactions.filter(
+          (each) => each.date == today
+        );
+        state.transactions = todayArr;
+        return;
+      }
+      if (lastSevenDays) {
+        const lastSevenDaysArr = state.originalTransactions.filter(
+          (each) => completeNumberFormat(each.date) >= lastSevenDays
+        );
+        state.transactions = lastSevenDaysArr;
+        return;
+      }
+      if (thisMonth) {
+        const thisMonthArr = state.originalTransactions.filter((each) => {
+          const getMonth = new Date(each.date).getMonth() + 1;
+          return getMonth == thisMonth;
+        });
+        state.transactions = thisMonthArr;
+        return;
+      }
     },
   },
 
@@ -79,6 +133,7 @@ const transactionSlice = createSlice({
       .addCase(allTransactions.fulfilled, (state, { payload }) => {
         state.istransLoading = false;
         state.transactions = payload;
+        state.originalTransactions = payload;
       })
       .addCase(allTransactions.rejected, (state, { payload }) => {
         state.istransLoading = true;
