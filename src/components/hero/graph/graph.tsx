@@ -1,7 +1,13 @@
+import { useSelector } from "react-redux";
 import { TheChart } from "..";
 import { Button } from "../../general/button";
+import { RootState } from "../../../store";
 
 const Graph = () => {
+  const { wallet, isWalletLoading } = useSelector(
+    (store: RootState) => store.walletStore
+  );
+
   return (
     <div className="iPadAir:w-[60%]">
       <div className="iPhone:flex items-center gap-10 surfaceDuo:gap-20">
@@ -10,7 +16,7 @@ const Graph = () => {
             Available Balance
           </p>
           <h2 className="text-[20px] surfaceDuo:text-[36px] text-[#000] font-extrabold">
-            USD 120,500.00
+            USD {isWalletLoading ? 0 : wallet?.balance}
           </h2>
         </div>
         <Button
