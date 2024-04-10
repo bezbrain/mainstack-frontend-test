@@ -48,8 +48,6 @@ const DateRange = () => {
   };
 
   useEffect(() => {
-    console.log("Change");
-
     dispatch(startDateRange(startValue));
     dispatch(endDateRange(endValue));
   }, [startValue, endValue]);

@@ -83,23 +83,18 @@ const transactionSlice = createSlice({
     initiateFilters: (state, { payload }) => {
       // console.log(payload);
       const { today, lastSevenDays, thisMonth, startDate, endDate } = payload;
-      console.log(payload);
-      console.log(state.transactions);
-      console.log(state.originalTransactions);
 
-      const filterBy = state.transactions.filter((each) => {
-        const getArrDate = completeNumberFormat(each.date);
-        // if (startDate && endDate) {
-        //   console.log(getArrDate);
-        //   console.log(startDate);
-        //   console.log(endDate);
+      // Filter based on start and end date
+      if (startDate && endDate) {
+        const filterBy = state.originalTransactions.filter((each) => {
+          const getArrDate = completeNumberFormat(each.date);
+          return getArrDate >= startDate && getArrDate <= endDate;
+        });
+        console.log(filterBy);
+        state.transactions = filterBy;
+      }
 
-        //   return getArrDate >= startDate && getArrDate <= endDate;
-        // }
-      });
-      console.log(filterBy);
-      state.transactions = filterBy;
-
+      // Filter based on today's date
       if (today) {
         const todayArr = state.originalTransactions.filter(
           (each) => each.date == today
@@ -107,6 +102,7 @@ const transactionSlice = createSlice({
         state.transactions = todayArr;
         return;
       }
+      // Filter based on last seven days
       if (lastSevenDays) {
         const lastSevenDaysArr = state.originalTransactions.filter(
           (each) => completeNumberFormat(each.date) >= lastSevenDays
@@ -114,6 +110,7 @@ const transactionSlice = createSlice({
         state.transactions = lastSevenDaysArr;
         return;
       }
+      // Filter based on this month
       if (thisMonth) {
         const thisMonthArr = state.originalTransactions.filter((each) => {
           const getMonth = new Date(each.date).getMonth() + 1;
