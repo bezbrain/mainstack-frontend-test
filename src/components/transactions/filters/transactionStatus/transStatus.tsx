@@ -4,21 +4,20 @@ import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { StatusDropdown } from "..";
 import {
   closeTransactionType,
+  selectedStatus,
   toggleTransactionStatus,
 } from "../../../../management/features/filtersSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { transactionStatusData } from "../../../../utils/data";
 
 const TransStatus = () => {
-  const { isTransactionStatus, filterByStatus } = useSelector(
+  const { isTransactionStatus, filterByStatus, statusSelected } = useSelector(
     (store: RootState) => store.filterStore
   );
 
   const { successful, pending, failed } = filterByStatus;
 
   const dispatch = useDispatch<AppDispatch>();
-
-  const [transStatusArr, setTransStatusArr] = useState<string[]>([]);
 
   const inputStyle = `h-[48px] w-full rounded-xl pl-4 pr-8 ${
     !isTransactionStatus
@@ -55,8 +54,8 @@ const TransStatus = () => {
         updateTransStatusArr.push(newStatus[2]);
       }
     }
-
-    setTransStatusArr(updateTransStatusArr);
+    dispatch(selectedStatus(updateTransStatusArr));
+    // setTransStatusArr(updateTransStatusArr);
   };
 
   useEffect(() => {
@@ -71,7 +70,7 @@ const TransStatus = () => {
         <input
           type="text"
           className={inputStyle}
-          value={`${transStatusArr.join(", ")}`}
+          value={statusSelected}
           readOnly
         />
         {!isTransactionStatus && (
