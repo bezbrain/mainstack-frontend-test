@@ -91,17 +91,18 @@ const transactionSlice = createSlice({
         startDate,
         endDate,
         typeSelected,
+        statusSelected,
       } = payload;
 
       // Filter based on start and end date
-      // if (startDate && endDate) {
-      //   const filterBy = state.originalTransactions.filter((each) => {
-      //     const getArrDate = completeNumberFormat(each.date);
-      //     return getArrDate >= startDate && getArrDate <= endDate;
-      //   });
-      //   console.log(filterBy);
-      //   state.transactions = filterBy;
-      // }
+      if (startDate && endDate) {
+        const filterBy = state.originalTransactions.filter((each) => {
+          const getArrDate = completeNumberFormat(each.date);
+          return getArrDate >= startDate && getArrDate <= endDate;
+        });
+        console.log(filterBy);
+        state.transactions = filterBy;
+      }
 
       // Transaction Type filter
       const filterType = state.originalTransactions.filter((each) => {
@@ -109,6 +110,13 @@ const transactionSlice = createSlice({
       });
       // console.log(filterType);
       state.transactions = filterType;
+
+      // Transaction Type filter
+      const filterStatus = state.originalTransactions.filter((each) => {
+        return statusSelected.includes(toCapitalLetter(each.status));
+      });
+      console.log(filterStatus);
+      state.transactions = filterStatus;
 
       // Filter based on today's date
       if (today) {

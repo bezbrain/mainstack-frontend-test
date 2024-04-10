@@ -18,6 +18,7 @@ interface FilterProps {
     failed: boolean;
   };
   typeSelected: string;
+  statusSelected: string;
 }
 
 const initialState: FilterProps = {
@@ -38,6 +39,7 @@ const initialState: FilterProps = {
     failed: true,
   },
   typeSelected: "",
+  statusSelected: "",
 };
 
 const filterSlice = createSlice({
@@ -65,6 +67,9 @@ const filterSlice = createSlice({
     selectedType: (state, { payload }) => {
       state.typeSelected = payload?.join(", ");
     },
+    selectedStatus: (state, { payload }) => {
+      state.statusSelected = payload?.join(", ");
+    },
 
     // Transaction Status
     toggleTransactionStatus: (state) => {
@@ -91,6 +96,7 @@ export const {
   closeTransactionType,
   checkedInput,
   selectedType,
+  selectedStatus,
   toggleTransactionStatus,
   checkedInputForStatus,
   closeTransactionStatus,
