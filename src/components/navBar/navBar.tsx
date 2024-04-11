@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import {
   closeNav,
+  closeProfileDropdown,
   openNav,
   toggleProfileDropdown,
 } from "../../management/features/navSlice";
@@ -44,6 +45,14 @@ const NavBar = () => {
   const handleNavOpenClick = () => {
     setIsToggle(true);
     dispatch(openNav());
+    dispatch(closeProfileDropdown());
+  };
+
+  //   CLOSE THE NAV BAR
+  const handleNavCloseClick = () => {
+    setIsToggle(false);
+    dispatch(closeProfileDropdown());
+    dispatch(closeNav());
   };
 
   // CLOSE FILTER SIDE BAR
@@ -53,16 +62,7 @@ const NavBar = () => {
     dispatch(closeTransactionStatus());
   };
 
-  //   CLOSE THE NAV BAR
-  const handleNavCloseClick = () => {
-    setIsToggle(false);
-    // setToggleDropdown(false);
-    dispatch(toggleProfileDropdown());
-    dispatch(closeNav());
-  };
-
   const handleProfileDropdownClick = () => {
-    // setToggleDropdown(!toggleDropdown);
     dispatch(toggleProfileDropdown());
   };
 

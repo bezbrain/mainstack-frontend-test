@@ -5,7 +5,7 @@ export const navStyles = (navIsOpen: boolean) => {
     navIsOpen ? "" : "rounded-full"
   } iPad:justify-between iPad:items-center iPad:h-fit`;
 
-  const middleNavStyles = `flex items-center gap-[5px] transition-all py-2 rounded-3xl iPad:px-4 
+  const middleNavStyles = `flex items-center gap-[5px] transition-all py-2 rounded-3xl px-4 
   `;
 
   return { navBarStyle, middleNavStyles };

@@ -38,6 +38,9 @@ const navSlice = createSlice({
     toggleProfileDropdown: (state) => {
       state.toggleDropdown = !state.toggleDropdown;
     },
+    closeProfileDropdown: (state) => {
+      state.toggleDropdown = false;
+    },
   },
 
   extraReducers: (builder) => {
@@ -58,4 +61,9 @@ const navSlice = createSlice({
 
 export default navSlice.reducer;
 
-export const { openNav, closeNav, toggleProfileDropdown } = navSlice.actions;
+export const {
+  openNav,
+  closeNav,
+  toggleProfileDropdown,
+  closeProfileDropdown,
+} = navSlice.actions;
