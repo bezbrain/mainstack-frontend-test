@@ -32,9 +32,3 @@ describe("Filter Component", () => {
     expect(store.getState().filterStore.isFilter).toBe(false);
   });
 });
-
-describe("Filter Reducer", () => {
-  test("Close filter action sets isFilter to false", () => {
-    // const newState = filterReducer()
-  });
-});
