@@ -63,7 +63,7 @@ const FilterHeader = () => {
   };
 
   return (
-    <header className="flex justify-between my-6">
+    <header className="grid grid-cols-2 gap-y-4 surfaceDuo:flex justify-between my-6">
       <Button
         btnContent="Today"
         btnStyle={`${btnFilterStyle} ${

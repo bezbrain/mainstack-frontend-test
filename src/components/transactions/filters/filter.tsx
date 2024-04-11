@@ -11,7 +11,7 @@ const Filter = () => {
 
   const filterContainerFilter = `fixed top-1 bottom-4 z-20 border-2 z-50 ${
     isFilter
-      ? "w-[456px] right-1 transition-all duration-1000"
+      ? "w-full surfaceDuo:w-[456px] right-1 transition-all duration-1000"
       : "-right-[600px] transition-all duration-1000"
   } min-h-[100vh] bg-white rounded-2xl p-4 flex flex-col justify-between gap-20 pb-6 overflow-y-auto overflow-x-hidden`;
 

@@ -60,13 +60,13 @@ const DateRange = () => {
   return (
     <DateWrapper className="text-[#141417]">
       <h2 className="font-extrabold mb-1">Date Range</h2>
-      <div className="flex gap-2">
+      <div className="iPhone:flex gap-2">
         {/* Start Date */}
-        <div className="w-1/2">
+        <div className="iPhone:w-1/2">
           <DatePicker
             calendarIcon={<FaAngleDown />}
             calendarClassName="w-full bg-white rounded-2xl border-none shadow-xl absolute top-[20px]"
-            className="h-[50px] w-full cursor-pointer z-20"
+            className="h-[50px] w-full cursor-pointer z-30"
             onClick={handleStartCalenderClick}
             value={startValue}
             onChange={handleStartDateChange}
@@ -74,7 +74,7 @@ const DateRange = () => {
           />
         </div>
         {/* End Date */}
-        <div className="w-1/2">
+        <div className="mt-2 iPhone:w-1/2 iPhone:mt-0">
           <DatePicker
             calendarIcon={<FaAngleDown />}
             calendarClassName="w-full bg-white rounded-2xl border-none shadow-xl absolute top-[20px] right-1/2 translate-x-1/2"
