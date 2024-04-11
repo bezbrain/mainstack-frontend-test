@@ -9,7 +9,7 @@ const Graph = () => {
   );
 
   return (
-    <div className="iPadAir:w-[60%]">
+    <div className="iPadAir:w-[60%]" data-testid="graph">
       <div className="iPhone:flex items-center gap-10 surfaceDuo:gap-20">
         <div>
           <p className="text-[14px] surfaceDuo:text-[16px]">

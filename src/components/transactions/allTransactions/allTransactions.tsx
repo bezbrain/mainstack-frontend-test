@@ -47,7 +47,7 @@ const AllTransactions = () => {
   }
 
   return (
-    <div onClick={handleAllTranasctionClick}>
+    <div onClick={handleAllTranasctionClick} data-testid="transactions">
       {istransLoading ? (
         <TransactionLoader />
       ) : (

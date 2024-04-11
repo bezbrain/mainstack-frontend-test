@@ -5,7 +5,13 @@ export const navStyles = (navIsOpen: boolean) => {
     navIsOpen ? "" : "rounded-full"
   } iPad:justify-between iPad:items-center iPad:h-fit`;
 
-  const middleNavStyles = `flex items-center gap-[5px] transition-all py-2 rounded-3xl iPad:px-4 iPad:hover:bg-[#edf0f5]`;
+  const middleNavStyles = `flex items-center gap-[5px] transition-all py-2 rounded-3xl iPad:px-4 
+  `;
 
   return { navBarStyle, middleNavStyles };
+};
+
+export const revenueNavStyle = () => {
+  const revenueBg = `bg-[#3b4147] text-[#f1f1f1] rounded-3xl`;
+  return revenueBg;
 };

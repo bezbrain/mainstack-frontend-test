@@ -9,7 +9,10 @@ const ProfileDropdown = () => {
   const { first_name, last_name, email } = user;
 
   return (
-    <div className="absolute right-[50%] translate-x-1/2 top-[72px] bg-[#fff] shadow-md rounded-xl w-[290px] py-4 iPad:right-[0%] iPad:translate-x-0 iPad:w-[350px]">
+    <div
+      className="absolute right-[50%] translate-x-1/2 top-[72px] bg-[#fff] shadow-md rounded-xl w-[290px] py-4 iPad:right-[0%] iPad:translate-x-0 iPad:w-[350px]"
+      data-testid="profile-dropdown"
+    >
       <header className="flex items-center gap-3 px-4">
         <span className="bg-[#3b4147] text-[#f5f5f7] h-[35px] w-[35px] rounded-full flex items-center justify-center">
           {getFirstLetter(first_name)}

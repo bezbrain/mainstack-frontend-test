@@ -8,9 +8,13 @@ import { LuUsers } from "react-icons/lu";
 import { RiAppsLine, RiMenu4Line } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
-import { closeNav, openNav } from "../../management/features/navSlice";
+import {
+  closeNav,
+  openNav,
+  toggleProfileDropdown,
+} from "../../management/features/navSlice";
 import { useEffect, useState } from "react";
-import { navStyles } from "./navStyles";
+import { navStyles, revenueNavStyle } from "./navStyles";
 import { NavProfileBtn } from "../helpers/skeleton-loaders";
 import { ProfileDropdown } from "./profileDropdown";
 import userProfile from "../../management/action/userProfile.action";
@@ -21,19 +25,18 @@ import {
   closeTransactionType,
 } from "../../management/features/filtersSlice";
 
-// White color: #f5f5f7
-// Black color: #56616b
-
 const NavBar = () => {
-  const { navIsOpen, isLoading, user } = useSelector(
+  const { navIsOpen, isLoading, user, toggleDropdown } = useSelector(
     (store: RootState) => store.navStore
   );
 
   const { first_name, last_name } = user;
 
-  const [toggleDropdown, setToggleDropdown] = useState(false);
+  // const [toggleDropdown, setToggleDropdown] = useState(false);
 
   const [isToggle, setIsToggle] = useState(false);
+
+  const { pathname } = location;
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -53,8 +56,14 @@ const NavBar = () => {
   //   CLOSE THE NAV BAR
   const handleNavCloseClick = () => {
     setIsToggle(false);
-    setToggleDropdown(false);
+    // setToggleDropdown(false);
+    dispatch(toggleProfileDropdown());
     dispatch(closeNav());
+  };
+
+  const handleProfileDropdownClick = () => {
+    // setToggleDropdown(!toggleDropdown);
+    dispatch(toggleProfileDropdown());
   };
 
   useEffect(() => {
@@ -65,6 +74,7 @@ const NavBar = () => {
     <nav
       className={navStyles(navIsOpen).navBarStyle}
       onClick={handleCloseSideFilter}
+      data-testid="nav-bar"
     >
       {/* Logo */}
       <a href="/" className="order-1 absolute iPad:order-1 iPad:static">
@@ -93,31 +103,56 @@ const NavBar = () => {
         }`}
       >
         <li>
-          <a href="" className={navStyles(navIsOpen).middleNavStyles}>
+          <a
+            href=""
+            className={`${
+              navStyles(navIsOpen).middleNavStyles
+            } iPad:hover:bg-[#edf0f5]`}
+          >
             <GrHomeRounded />
             <span>Home</span>
           </a>
         </li>
         <li>
-          <a href="" className={navStyles(navIsOpen).middleNavStyles}>
+          <a
+            href=""
+            className={`${
+              navStyles(navIsOpen).middleNavStyles
+            } iPad:hover:bg-[#edf0f5]`}
+          >
             <MdInsertChartOutlined className="text-xl" />
             <span>Analytics</span>
           </a>
         </li>
         <li>
-          <a href="" className={navStyles(navIsOpen).middleNavStyles}>
+          <a
+            href=""
+            className={`${navStyles(navIsOpen).middleNavStyles} ${
+              pathname == "/revenue" && !toggleDropdown ? revenueNavStyle() : ""
+            }`}
+          >
             <FaMoneyBills className="text-xl" />
             <span>Revenue</span>
           </a>
         </li>
         <li>
-          <a href="" className={navStyles(navIsOpen).middleNavStyles}>
+          <a
+            href=""
+            className={`${
+              navStyles(navIsOpen).middleNavStyles
+            } iPad:hover:bg-[#edf0f5]`}
+          >
             <LuUsers className="text-xl" />
             <span>CMR</span>
           </a>
         </li>
         <li>
-          <a href="" className={navStyles(navIsOpen).middleNavStyles}>
+          <a
+            href=""
+            className={`${
+              navStyles(navIsOpen).middleNavStyles
+            } iPad:hover:bg-[#edf0f5]`}
+          >
             <RiAppsLine className="text-xl" />
             <span>Apps</span>
           </a>
@@ -142,7 +177,8 @@ const NavBar = () => {
           ) : (
             <button
               className="flex items-center bg-[#edf0f5] p-2 rounded-3xl"
-              onClick={() => setToggleDropdown(!toggleDropdown)}
+              onClick={handleProfileDropdownClick}
+              data-testid="toggle-dropdown"
             >
               <span className="bg-[#3b4147] text-[#f5f5f7] h-[35px] w-[35px] rounded-full flex items-center justify-center">
                 {getFirstLetter(first_name)}

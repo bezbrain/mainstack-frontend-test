@@ -3,9 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 type ValuePiece = Date | null;
 export type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-// const [startValue, setStartValue] = useState<Value>(new Date());
-// const [endValue, setEndValue] = useState<Value>(new Date());
-
 interface FilterProps {
   isFilter: boolean;
   isTransactionType: boolean;

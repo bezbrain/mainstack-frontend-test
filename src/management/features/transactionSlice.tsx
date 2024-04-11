@@ -7,6 +7,7 @@ import { toCapitalLetter } from "../../utils/toCapitalLetter";
 
 export interface TransactionProps {
   istransLoading: boolean;
+  isModal: boolean;
   originalTransactions: {
     amount: 0;
     metadata: {
@@ -41,6 +42,7 @@ export interface TransactionProps {
 
 const initialState: TransactionProps = {
   istransLoading: false,
+  isModal: false,
   originalTransactions: [
     {
       amount: 0,
@@ -133,6 +135,13 @@ const transactionSlice = createSlice({
 
       state.transactions = filteredTransaction;
     },
+
+    showModal: (state) => {
+      state.isModal = true;
+    },
+    closeModal: (state) => {
+      state.isModal = false;
+    },
   },
 
   extraReducers: (builder) => {
@@ -154,4 +163,5 @@ const transactionSlice = createSlice({
 
 export default transactionSlice.reducer;
 
-export const { initiateFilters } = transactionSlice.actions;
+export const { initiateFilters, showModal, closeModal } =
+  transactionSlice.actions;

@@ -1,7 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../../../general/button";
 import { AppDispatch, RootState } from "../../../../store";
-import { initiateFilters } from "../../../../management/features/transactionSlice";
+import {
+  closeModal,
+  initiateFilters,
+} from "../../../../management/features/transactionSlice";
 import allTransactions from "../../../../management/action/transactions.action";
 import {
   clearAllFilter,
@@ -31,6 +34,7 @@ const FilterBtns = () => {
     dispatch(closeFilter());
     dispatch(closeTransactionType());
     dispatch(closeTransactionStatus());
+    dispatch(closeModal());
 
     if (
       today ||
@@ -65,6 +69,7 @@ const FilterBtns = () => {
     dispatch(allTransactions());
     dispatch(clearFilter());
     dispatch(clearAllFilter());
+    dispatch(closeModal());
   };
 
   return (
