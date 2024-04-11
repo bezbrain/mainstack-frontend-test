@@ -1,13 +1,14 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { RevenuePage } from "./pages";
+import { Home, RevenuePage, SharedLayout } from "./pages";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
           <Route path="revenue" element={<RevenuePage />} />
         </Route>
       </Routes>
