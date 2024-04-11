@@ -21,8 +21,6 @@ const NotFound = () => {
   };
 
   const handleClearFilter = () => {
-    console.log("Clear");
-
     dispatch(allTransactions());
     dispatch(clearFilter());
     dispatch(clearAllFilter());

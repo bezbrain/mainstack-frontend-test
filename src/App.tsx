@@ -13,7 +13,7 @@ import {
   closeTransactionStatus,
   closeTransactionType,
 } from "./management/features/filtersSlice";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 const App = () => {
   const { isModal } = useSelector((store: RootState) => store.transactionStore);
@@ -26,12 +26,6 @@ const App = () => {
     dispatch(closeTransactionStatus());
     dispatch(closeModal());
   };
-
-  useEffect(() => {
-    if (location.pathname === "/") {
-      location.href = "/revenue";
-    }
-  }, []);
 
   return (
     <main className="mx-4">
