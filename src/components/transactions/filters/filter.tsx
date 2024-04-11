@@ -23,13 +23,14 @@ const Filter = () => {
   };
 
   return (
-    <div className={filterContainerFilter}>
+    <div className={filterContainerFilter} data-testid="filter">
       <div>
         <header className="flex items-center justify-between text-[24px]">
           <h1 className="text-[#000] font-extrabold">Filter</h1>
           <IoCloseSharp
             className="cursor-pointer text-3xl"
             onClick={closeFilterContainer}
+            data-testid="close-button"
           />
         </header>
         <FilterHeader />

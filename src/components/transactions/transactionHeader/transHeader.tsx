@@ -40,6 +40,8 @@ const TransHeader = () => {
           btnContent="Filter"
           icon={<FaAngleDown />}
           handleClick={handleShowFilter}
+          btnId="open-button"
+          // data-testid="open-button"
         />
         <Button btnContent="Export list" icon={<MdOutlineFileDownload />} />
       </div>
