@@ -21,67 +21,42 @@ In this project (the revenue dashboard), the following features where implemente
 - Dynamic api call of all transactions
 - Profile dropdown (with toggle effect)
 - Navigation to revenue dashboard
-- URL customization
-- QR Code generator for shortened or customized URLs
-- Analytics of shortened and customized URLs performance
-- Application demo
+- Interactive hover effects
+- Modal effect when the filter toggles
+- Filter by date (today, last 7 days, this month and last 3 months)
+- Filter by date range
+- Filter by transaction type
+- Filter by transaction status
+- Clear filter
 - Fully responseive revenue dashboard
+- Others
 
 ## Major Libraries Used
 
-There are many librabries used for the projects and the ones that might look obscure to you and what they do are:
+The following are major libraries used:
 
-1. firebase - for handling pages' analytics and urls performance
-2. gsap - for basic animations
+1. axios: for http methods and api calls
+2. @reduxjs/toolkit: for state management
 3. qrcode.react - for generation QR codes
-4. react-copy-to-clipboard - to copy URL shortened or customized from the input field
+4. react-date-picker - for handling date and date range
 5. react-intersection-observer - for animations
-6. react-toastify - for pop up notification
-7. recharts - for handling all charts
+6. react-icons - for getting all icons in the project
+7. recharts - for handling the chart
 8. vitest - for writing test
 9. @testing-library/react - to use screen, render etc methods
 10. @testing-library/jest-dom - to use Jest testing properties
+11. react-loading-skeleton - for the skeleton loading state
+12. react-toastify - for displaying success or error messages
+13. styled-components - styling library to complement tailwind css
 
-To install any of these librabries, just run: `npm install <library name>` eg. To install gsap: `npm install gsap`
+To install any of these librabries, just run: `npm install <library name>` eg. To install gsap: `npm install axios`
 
 ## Project Goals
 
-1. Implement the URL manipulation functionalities:
+The major goals of this project are:
 
-- Implement user authentication:
-  - The user should be able to register with username, email and password
-  - The user should be able to login with username/email and password
-  - The user should be able to logout
-
-2. Implement URL manipulators:
-
-- URL shortening
-- URL customizing
-- QR code generator for URL shortened or customized
-
-3. Demo application: While in demo mode, user should be to:
-
-   - generate short url
-   - customize url
-   - view short and custom urls
-
-4. Ensure code quality:
-
-   - Write clean, well-structured, and maintainable codes; one of the ways which is, maintaining modular programming.
-   - Follow best practices and adhere to the React + Vite + Typescript coding conventions.
-   - Pay attention to performance.
-
-5. Code documentation:
-
-   - Document your code by adding comments and explanatory notes where necessary.
-
-6. Use version control:
-
-   - Use `Git` for version control. Commit you changes when important changes are made and push them to a branch in your forked repository.
-
-7. Create a PR:
-   - Once you have completed the project goals, create a pull request to merge your changes into the main repository.
-   - While at this, provide a clear description of the changes made and any relevent information for the code review.
+- To implement core features and display my ability to pay attention to details.
+- To write basic unit test.
 
 ## Resources
 
@@ -90,3 +65,7 @@ Here are some resources that may be helpful during your work on this project:
 - [Vite Documentation](https://vitejs.dev/) - Official documentation for Vite, providing guides on how to install Vite application.
 
 - [React Documentation](https://create-react-app.dev/) - Official documentation for React, providing detailed information on React concepts and usage.
+
+- [Rechart Documentation](https://recharts.org/en-US/guide/getting-started) - Official documentation for Rechart, providing detailed information on development of the chart.
+
+- [Date Picker Documentation](https://www.npmjs.com/package/react-date-picker?activeTab=readme) - Official npm readme page for Date Picker, providing detailed information on date usage.
