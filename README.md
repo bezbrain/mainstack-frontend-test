@@ -18,7 +18,7 @@ To start working on the project, follow these steps:
 
 In this project (the revenue dashboard), the following features where implemented:
 
-- User authentication
+- Dynamic api call of all transactions
 - URL shortening
 - URL customization
 - QR Code generator for shortened or customized URLs
