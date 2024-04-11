@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { store } from "../store";
 import { Filter } from "../components/transactions/filters";
 import { NavBar } from "../components/navBar";
-import { Graph } from "../components/hero";
+import { Balances, Graph } from "../components/hero";
 
 describe("Filter Component", () => {
   test("Nav Bar renders", () => {
@@ -26,7 +26,7 @@ describe("Filter Component", () => {
     expect(filterContainer).toBeInTheDocument();
   });
 
-  test("Chart components renders", () => {
+  test("Chart/Graph component renders", () => {
     render(
       <Provider store={store}>
         <Graph />
@@ -34,5 +34,15 @@ describe("Filter Component", () => {
     );
     const graphContainer = screen.getByTestId("graph");
     expect(graphContainer).toBeInTheDocument();
+  });
+
+  test("Wallet/Balance component renders", () => {
+    render(
+      <Provider store={store}>
+        <Balances />
+      </Provider>
+    );
+    const walletContainer = screen.getByTestId("balance");
+    expect(walletContainer).toBeInTheDocument();
   });
 });
