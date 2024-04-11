@@ -104,10 +104,12 @@ const NavBar = () => {
       >
         <li>
           <a
-            href=""
-            className={`${
-              navStyles(navIsOpen).middleNavStyles
-            } iPad:hover:bg-[#edf0f5]`}
+            href="/"
+            className={`${navStyles(navIsOpen).middleNavStyles}   ${
+              pathname == "/" && !toggleDropdown
+                ? revenueNavStyle()
+                : "iPad:hover:bg-[#edf0f5]"
+            }`}
           >
             <GrHomeRounded />
             <span>Home</span>
@@ -126,9 +128,11 @@ const NavBar = () => {
         </li>
         <li>
           <a
-            href=""
+            href="/revenue"
             className={`${navStyles(navIsOpen).middleNavStyles} ${
-              pathname == "/revenue" && !toggleDropdown ? revenueNavStyle() : ""
+              pathname == "/revenue" && !toggleDropdown
+                ? revenueNavStyle()
+                : "iPad:hover:bg-[#edf0f5]"
             }`}
           >
             <FaMoneyBills className="text-xl" />
