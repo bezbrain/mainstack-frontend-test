@@ -7,7 +7,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="revenue" element={<RevenuePage />} />
+        <Route path="/">
+          <Route path="revenue" element={<RevenuePage />} />
+        </Route>
       </Routes>
       <ToastContainer position="bottom-right" autoClose={5000} />
     </BrowserRouter>
