@@ -68,6 +68,7 @@ const NavBar = () => {
     <nav
       className={navStyles(navIsOpen).navBarStyle}
       onClick={handleCloseSideFilter}
+      data-testid="nav-bar"
     >
       {/* Logo */}
       <a href="/" className="order-1 absolute iPad:order-1 iPad:static">
