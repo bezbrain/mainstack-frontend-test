@@ -178,7 +178,7 @@ const NavBar = () => {
             <button
               className="flex items-center bg-[#edf0f5] p-2 rounded-3xl"
               onClick={handleProfileDropdownClick}
-              data-testid="open-dropdown"
+              data-testid="toggle-dropdown"
             >
               <span className="bg-[#3b4147] text-[#f5f5f7] h-[35px] w-[35px] rounded-full flex items-center justify-center">
                 {getFirstLetter(first_name)}

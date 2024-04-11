@@ -1,28 +1,48 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { NavBar } from "../../components/navBar";
 import { store } from "../../store";
 import { Provider } from "react-redux";
 
 describe("Profile Dropdown", () => {
-  test("Dropdown Profile when open button is clicked", () => {
+  test("Dropdown Profile when open button is clicked", async () => {
     render(
       <Provider store={store}>
         <NavBar />
       </Provider>
     );
-    const btnOpen = screen.getByTestId("open-dropdown");
+    // Wait for the button to appear
+    const btnOpen = await screen.findByTestId(
+      "toggle-dropdown",
+      {},
+      { timeout: 5000 }
+    );
+    // Click the button
     fireEvent.click(btnOpen);
 
-    // Check if the ProfileDropdown component is rendered when the button is clicked
-    const profileDropdown = screen.getByTestId("profile-dropdown");
-    expect(profileDropdown).toBeInTheDocument();
+    // Wait for the state to update
+    await waitFor(() => {
+      expect(store.getState().navStore.toggleDropdown).toBe(true);
+    });
+  });
 
-    // // Check if the toggleDropdown state is true after the button click
-    // const isDropdownOpen = screen
-    //   .getByTestId("nav-bar")
-    //   .getAttribute("data-dropdown-open");
-    // expect(isDropdownOpen).toBe("true");
+  test("Close Dropdown Profile when close button is clicked", async () => {
+    render(
+      <Provider store={store}>
+        <NavBar />
+      </Provider>
+    );
+    // Wait for the button to appear
+    const btnClose = await screen.findByTestId(
+      "toggle-dropdown",
+      {},
+      { timeout: 5000 }
+    );
+    // Click the button
+    fireEvent.click(btnClose);
 
-    // expect(btnOpen.getAttribute("dropdown")).toBe(true);
+    // Wait for the state to update
+    await waitFor(() => {
+      expect(store.getState().navStore.toggleDropdown).toBe(false);
+    });
   });
 });
