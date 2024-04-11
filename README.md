@@ -1,4 +1,4 @@
-# [Mainstack Frontend Test](https://mainstack-frontend-test.netlify.app/)
+# [Mainstack Frontend Test](https://mainstack-frontend-test.netlify.app/revenue)
 
 ### You may click the heading above to visit the application
 
