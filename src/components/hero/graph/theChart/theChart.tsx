@@ -1,12 +1,5 @@
 import { useSelector } from "react-redux";
-import {
-  CartesianGrid,
-  Line,
-  LineChart,
-  ResponsiveContainer,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { CartesianGrid, Line, LineChart, ResponsiveContainer } from "recharts";
 import { RootState } from "../../../../store";
 import { completeNumberFormat } from "../../../../utils/convertDateFormat";
 
@@ -39,8 +32,8 @@ const TheChart = () => {
       <LineChart className="w-full" height={400} data={data}>
         <CartesianGrid vertical={false} horizontal={false} />
         <Line type="monotone" dataKey="count" stroke="#ffaa82" />
-        <XAxis dataKey="name" />
-        <YAxis />
+        {/* <XAxis dataKey="name" />
+        <YAxis /> */}
       </LineChart>
     </ResponsiveContainer>
   );

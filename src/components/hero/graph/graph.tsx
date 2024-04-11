@@ -24,8 +24,15 @@ const Graph = () => {
           btnStyle="py-2 px-10 bg-[#3b4147] text-[#f1f1f1] my-2 iPhone:my-0"
         />
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto overflow-y-hidden">
         <TheChart />
+      </div>
+      <div className="-mt-16 py-4">
+        <hr className="w-full" />
+        <div className="flex justify-between mt-1 text-[14px]">
+          <p>Mar 1, 2022</p>
+          <p>Mar 31, 2022</p>
+        </div>
       </div>
     </div>
   );

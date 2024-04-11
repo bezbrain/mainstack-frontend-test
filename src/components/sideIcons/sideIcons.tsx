@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const SideIcons = () => {
   return (
-    <SideIconsWrapper className="fixed top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4 border-[1px] p-1 rounded-3xl shadow-xl bg-white">
+    <SideIconsWrapper className="fixed top-1/2 -translate-y-1/2 z-50  flex-col gap-4 border-[1px] p-1 rounded-3xl shadow-xl bg-white hidden 2xl:flex">
       <div className="relative">
         <BsLink className="link__icon cursor-pointer text-4xl hover:bg-gradient-to-r from-[#fcfc1c] to-[#FF9D0A] rounded-full p-2 hover:text-[#f5f5f7]" />
         <p
