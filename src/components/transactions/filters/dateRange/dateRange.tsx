@@ -28,28 +28,22 @@ const DateRange = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
+  // FORMAT DATE EVERY TIME THE START DATE VALUE CHANGES
   useEffect(() => {
     calendarFormat(startValue);
   }, [startValue]);
 
+  // DATE START TOGGLE
   const handleStartCalenderClick = () => {
     setIsStartCloseCalendar(!isStartCloseCalendar);
   };
 
+  // DATE END TOGGLE
   const handleEndCalenderClick = () => {
     setIsEndCloseCalendar(!isEndCloseCalendar);
   };
 
-  const shouldCloseCalendar = ({ reason }: { reason: string }) => {
-    // Close the calendar only if the reason is not "select" (i.e., clicking on a date)
-    return reason !== "select";
-  };
-
-  const shouldOpenCalendar = ({ reason }: { reason: string }) => {
-    // Open the calendar only if the reason is "focus"
-    return reason === "focus";
-  };
-
+  // HANDLE CALENDAR CHANGE
   const handleStartDateChange = (startValue: Value) => {
     dispatch(startDateValue(startValue));
   };
@@ -71,19 +65,11 @@ const DateRange = () => {
         <div className="w-1/2">
           <DatePicker
             calendarIcon={<FaAngleDown />}
-            calendarClassName="w-full bg-white rounded-2xl border-none shadow-xl absolute top-[50px]"
+            calendarClassName="w-full bg-white rounded-2xl border-none shadow-xl absolute top-[20px]"
             className="h-[50px] w-full cursor-pointer z-20"
-            // closeCalendar={isStartCloseCalendar}
-            isOpen={isStartCloseCalendar}
-            onClickDay={() => setIsStartCloseCalendar(false)} // Close the start date calendar when a day is clicked
-            disabled={true}
             onClick={handleStartCalenderClick}
             value={startValue}
             onChange={handleStartDateChange}
-            onCalendarClose={() => setIsStartCloseCalendar(false)} // Close the start date calendar when it is closed
-            onCalendarOpen={() => setIsStartCloseCalendar(true)}
-            shouldOpenCalendar={shouldOpenCalendar}
-            shouldCloseCalendar={shouldCloseCalendar}
             format="y-MM-dd"
           />
         </div>
@@ -91,16 +77,11 @@ const DateRange = () => {
         <div className="w-1/2">
           <DatePicker
             calendarIcon={<FaAngleDown />}
-            calendarClassName="w-full bg-white rounded-2xl border-none shadow-xl absolute top-[50px] right-1/2 translate-x-1/2"
+            calendarClassName="w-full bg-white rounded-2xl border-none shadow-xl absolute top-[20px] right-1/2 translate-x-1/2"
             className="h-[50px] w-full cursor-pointer z-20"
-            // closeCalendar={isEndCloseCalendar}
-            isOpen={isEndCloseCalendar}
-            onClickDay={() => setIsEndCloseCalendar(false)} // Close the end date calendar when a day is clicked
-            disabled={true}
             onClick={handleEndCalenderClick}
             value={endValue}
             onChange={handleEndDateChange}
-            onCalendarClose={() => setIsEndCloseCalendar(false)} // Close the end date calendar when it is closed
             format="y-MM-dd"
           />
         </div>
@@ -113,8 +94,15 @@ export default DateRange;
 
 const DateWrapper = styled.div`
   input {
-    /* border: 2px solid red;
-    display: none;
-    border-radius: 10px; */
+    background: inherit !important;
+  }
+
+  input:focus {
+    /* border: 2px solid red; */
+    border: 1px solid #000;
+    outline: none;
+    height: fit-content;
+    border-radius: 3px;
+    background-color: inherit;
   }
 `;
