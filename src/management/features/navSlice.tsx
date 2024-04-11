@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 interface NavBarProps {
   navIsOpen: boolean;
   isLoading: boolean;
+  toggleDropdown: boolean;
   user: {
     first_name: string;
     last_name: string;
@@ -16,6 +17,7 @@ interface NavBarProps {
 const initialState: NavBarProps = {
   navIsOpen: false,
   isLoading: false,
+  toggleDropdown: false,
   user: {
     first_name: "",
     last_name: "",
@@ -32,6 +34,9 @@ const navSlice = createSlice({
     },
     closeNav: (state) => {
       state.navIsOpen = false;
+    },
+    toggleProfileDropdown: (state) => {
+      state.toggleDropdown = !state.toggleDropdown;
     },
   },
 
@@ -53,4 +58,4 @@ const navSlice = createSlice({
 
 export default navSlice.reducer;
 
-export const { openNav, closeNav } = navSlice.actions;
+export const { openNav, closeNav, toggleProfileDropdown } = navSlice.actions;

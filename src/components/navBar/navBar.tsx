@@ -8,7 +8,11 @@ import { LuUsers } from "react-icons/lu";
 import { RiAppsLine, RiMenu4Line } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
-import { closeNav, openNav } from "../../management/features/navSlice";
+import {
+  closeNav,
+  openNav,
+  toggleProfileDropdown,
+} from "../../management/features/navSlice";
 import { useEffect, useState } from "react";
 import { navStyles, revenueNavStyle } from "./navStyles";
 import { NavProfileBtn } from "../helpers/skeleton-loaders";
@@ -22,13 +26,13 @@ import {
 } from "../../management/features/filtersSlice";
 
 const NavBar = () => {
-  const { navIsOpen, isLoading, user } = useSelector(
+  const { navIsOpen, isLoading, user, toggleDropdown } = useSelector(
     (store: RootState) => store.navStore
   );
 
   const { first_name, last_name } = user;
 
-  const [toggleDropdown, setToggleDropdown] = useState(false);
+  // const [toggleDropdown, setToggleDropdown] = useState(false);
 
   const [isToggle, setIsToggle] = useState(false);
 
@@ -52,12 +56,14 @@ const NavBar = () => {
   //   CLOSE THE NAV BAR
   const handleNavCloseClick = () => {
     setIsToggle(false);
-    setToggleDropdown(false);
+    // setToggleDropdown(false);
+    dispatch(toggleProfileDropdown());
     dispatch(closeNav());
   };
 
   const handleProfileDropdownClick = () => {
-    setToggleDropdown(!toggleDropdown);
+    // setToggleDropdown(!toggleDropdown);
+    dispatch(toggleProfileDropdown());
   };
 
   useEffect(() => {
@@ -172,6 +178,7 @@ const NavBar = () => {
             <button
               className="flex items-center bg-[#edf0f5] p-2 rounded-3xl"
               onClick={handleProfileDropdownClick}
+              data-testid="open-dropdown"
             >
               <span className="bg-[#3b4147] text-[#f5f5f7] h-[35px] w-[35px] rounded-full flex items-center justify-center">
                 {getFirstLetter(first_name)}

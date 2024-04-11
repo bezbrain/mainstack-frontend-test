@@ -5,16 +5,6 @@ import { Provider } from "react-redux";
 import { TransHeader } from "../../components/transactions";
 
 describe("Filter Component", () => {
-  // test("Renders with the initial state", () => {
-  //   render(
-  //     <Provider store={store}>
-  //       <Filter />
-  //     </Provider>
-  //   );
-  //   const filterContainer = screen.getByTestId("filter");
-  //   expect(filterContainer).toBeInTheDocument();
-  // });
-
   test("Open filter when open button is clicked", () => {
     render(
       <Provider store={store}>
