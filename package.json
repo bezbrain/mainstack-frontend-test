@@ -2,6 +2,7 @@
   "name": "mainstack-frontend-assessment",
   "private": true,
   "version": "0.0.0",
+  "homepage": "/revenue",
   "type": "module",
   "scripts": {
     "dev": "vite",

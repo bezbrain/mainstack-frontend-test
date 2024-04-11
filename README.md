@@ -11,22 +11,12 @@ To start working on the project, follow these steps:
 3. Install the required dependencies by running `npm install` in the project directory.
 4. Open the project in your preferred code editor.
 5. Review the existing code in the src directory to understand the initial structure and components hierarchy.
-6. Implement the shortener and customization functionalities by modifying the necessary components.
-7. Run the application using `npm run dev`
-8. Run test using `npm test`
-9. Commit you changes when significant changes are made, then push them to a branch in your forked repository.
-10. Once you have completed the project goals, create a pull request to merge your changes into the main repositiory.
-
-## Technical Instruction
-
-1. Fork this repo to your local GitHub account.
-2. Create a new branch to complete all your work in.
-3. Test your work with your preferred testing tool.
-4. Create a Pull Request against your main branch when you are done and all tests are passing.
+6. Run the application using `npm run dev`
+7. Run test using `npm test`
 
 ## Project Overview
 
-The goal of this project is to build a fully functional URL shortener web application with the following major features:
+In this project (the revenue dashboard), the following features where implemented:
 
 - User authentication
 - URL shortening
