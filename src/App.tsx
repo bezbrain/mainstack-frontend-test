@@ -5,9 +5,9 @@ import { RevenuePage } from "./pages";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/revenue">
       <Routes>
-        <Route path="revenue" element={<RevenuePage />} />
+        <Route index element={<RevenuePage />} />
       </Routes>
       <ToastContainer position="bottom-right" autoClose={5000} />
     </BrowserRouter>
