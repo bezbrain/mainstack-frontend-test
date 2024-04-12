@@ -51,7 +51,8 @@ const TransHeader = () => {
           <span>{istransLoading ? 0 : transactions?.length}</span> Transactions
         </h1>
         <p className="text-[14px]">
-          Your transactions for the last {istransLoading ? 0 : lastTransaction}{" "}
+          Your transactions for the last{" "}
+          {istransLoading || transactions.length === 0 ? 0 : lastTransaction}{" "}
           years
         </p>
       </div>
